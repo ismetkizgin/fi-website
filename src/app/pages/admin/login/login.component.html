@@ -1,0 +1,36 @@
+<div class="login__wrapper">
+    <div class="login__formContent">
+        <h2 class="login__form-title active">{{ 'Login' | translate }}</h2>
+
+        <div>
+            <img src="favicon.ico" class="login__logo" alt="User Icon" />
+        </div>
+
+        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+            <input type="text" name="UserEmail" id="UserEmail" class="login__input"
+                placeholder="{{ 'E-Mail' | translate }}" #UserEmail="ngModel" [(ngModel)]="model.UserEmail"
+                required />
+            <input type="password" name="UserPassword" id="UserPassword" class="login__input"
+                placeholder="{{ 'Password' | translate }}" #UserPassword="ngModel" [(ngModel)]="model.UserPassword"
+                required />
+            <button type="submit" class="login__button">{{ 'Login' | translate }}</button>
+        </form>
+
+        <div class="login__formFooter">
+            <div class="row">
+                <div class="col-12">
+                    <a class="login__forget login__underlineHover" href="#">{{ 'Forgot password ?' | translate }}</a>
+                </div>
+                <div class="col-12 login__langues__box">
+                    <a (click)="useLanguage('tr')">
+                        <i class="flag-icon flag-icon-tr login__langues__flag"></i>
+                    </a>
+                    <a (click)="useLanguage('en')">
+                        <i class="flag-icon flag-icon-us login__langues__flag"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

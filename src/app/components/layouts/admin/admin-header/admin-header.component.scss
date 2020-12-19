@@ -1,0 +1,13 @@
+.main-header {
+  z-index: 998;
+}
+
+.lang {
+    position: relative;
+    width: 30px;
+    height: 20px;
+
+  &__selection {
+    cursor: pointer;
+  }
+}

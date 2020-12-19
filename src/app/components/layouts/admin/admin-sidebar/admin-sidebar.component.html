@@ -1,0 +1,45 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <a href="index.html" class="brand-link logo-switch">
+        <img src="favicon.ico" alt="AdminLTE Docs Logo Small" class="brand-image-xl logo-xs">
+        <img src="favicon.ico" alt="AdminLTE Docs Logo Large" class="brand-image-xs logo-xl" style="left: 12px">
+    </a>
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar nav-child-indent flex-column" data-widget="treeview" role="menu">
+
+                <li *ngFor="let item of menu; index as indis"
+                    [ngClass]="{'nav-item':true, 'has-treeview':item.submenu, 'menu-open':item.submenuShowHide}">
+                    
+                    <a *ngIf="item.submenu; then dropdownItem else singleItem"></a>
+                    
+                    <ng-template #dropdownItem>
+                        <a (click)="toggle(indis)" [class.active]="isActive(item.linkActive)" class="nav-link">
+                            <i class="nav-icon {{ item.icon }}"></i>
+                            <p>
+                                {{ item.title | translate }}
+                                <i class="right fa fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li *ngFor="let subItem of item.submenu" class="nav-item">
+                                <a [routerLink]="[subItem.link]" [routerLinkActive]="['active']" class="nav-link">
+                                    <i class="nav-icon {{subItem.icon}}"></i>
+                                    <p>{{ subItem.title | translate }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </ng-template>
+
+                    <ng-template #singleItem>
+                        <a [routerLink]="[item.link]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+                            <i class="nav-icon {{item.icon}}"></i>
+                            <p>{{ item.title | translate }}</p>
+                        </a>
+                    </ng-template>
+
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+</aside>

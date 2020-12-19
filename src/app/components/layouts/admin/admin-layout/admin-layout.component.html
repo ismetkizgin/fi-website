@@ -1,0 +1,24 @@
+<app-admin-header></app-admin-header>
+<app-admin-sidebar></app-admin-sidebar>
+<div class="content-wrapper" style='min-height: "88vh";'>
+    <div *ngIf="title != null && icon != null" class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div *ngIf="title != null" class="col-sm-10">
+                    <h1 class="m-0 text-dark">{{title}}</h1>
+                </div>
+                <div *ngIf="icon != null" class="col-sm-2 text-right text-muted">
+                    <i class="{{icon}}"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="container-fluid">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
+<app-admin-control-sidebar></app-admin-control-sidebar>
+<app-admin-footer></app-admin-footer>
+<div id="sidebar-overlay" style="z-index: 998;" data-widget="pushmenu"></div>
