@@ -4,14 +4,20 @@ import {
   ClientLayoutComponent,
   AdminLayoutComponent,
 } from './components/layouts';
-import { HomepageComponent, DashboardComponent, LoginComponent } from './pages';
+import { HomepageComponent, DashboardComponent, LoginComponent, IssuesComponent } from './pages';
 import { AuthGuard } from './utils/guards';
 
 const routes: Routes = [
   {
     path: '',
     component: ClientLayoutComponent,
-    children: [{ path: '', component: HomepageComponent }],
+    children: [
+      { path: '', component: HomepageComponent },
+      {
+        path: 'issues',
+        component: IssuesComponent,
+      },
+    ],
   },
   {
     path: 'admin',
