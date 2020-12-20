@@ -3,12 +3,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule, routingComponents } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { AdminLayoutModule } from './pages/admin/admin-layout.module';
-import { ClientLayoutModule } from './pages/client/client-layout.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { MatModule } from './utils';
+import {
+  DialogWindowComponent,
+  AdminControlSidebarComponent,
+  AdminFooterComponent,
+  AdminHeaderComponent,
+  AdminSidebarComponent,
+} from './components';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -17,16 +24,21 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    DialogWindowComponent,
+    AdminControlSidebarComponent,
+    AdminFooterComponent,
+    AdminHeaderComponent,
+    AdminSidebarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ClientLayoutModule,
-    AdminLayoutModule,
+    MatModule,
+    FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSnackBarModule,
+    DragDropModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -36,7 +48,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-
-export class AppModule { }
+export class AppModule {}

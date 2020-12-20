@@ -1,10 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, ChildActivationEnd } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 import {
   ClientLayoutComponent,
   AdminLayoutComponent,
 } from './components/layouts';
-import { HomepageComponent, DashboardComponent, LoginComponent, IssuesComponent } from './pages';
+import {
+  HomepageComponent,
+  DashboardComponent,
+  LoginComponent,
+  IssuesComponent,
+} from './pages';
 import { AuthGuard } from './utils/guards';
 
 const routes: Routes = [
@@ -25,7 +30,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     canActivateChild: [AuthGuard],
     children: [
-      { path: '', component: DashboardComponent, data: { title: 'Dashboard', icon: 'fa fa-2x fa-home' } },
+      {
+        path: '',
+        component: DashboardComponent,
+        data: { title: 'Dashboard', icon: 'fa fa-2x fa-home' },
+      },
     ],
   },
   {
@@ -40,4 +49,11 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-export const routingComponents = [];
+export const routingComponents = [
+  AdminLayoutComponent,
+  ClientLayoutComponent,
+  DashboardComponent,
+  IssuesComponent,
+  HomepageComponent,
+  LoginComponent,
+];

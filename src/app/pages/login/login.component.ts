@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../utils/services';
-import { LanguageService } from '../../../utils';
+import { AuthService } from '../../utils/services';
+import { LanguageService } from '../../utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from '../../../models/user';
+import { User } from '../../models/user';
 import { NgForm } from '@angular/forms';
 
 @Component({

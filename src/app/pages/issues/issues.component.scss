@@ -1,0 +1,31 @@
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+.cards {
+  cursor: pointer;
+  min-width: 220px !important;
+}
+.rounded-xl {
+  border-radius: 10px;
+}
+.min-max-h {
+  min-height: 500px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.user-text {
+  color: rgb(210, 210, 211);
+  font-size: 11px;
+}
+.bg-image {
+  background-image: url("../../../assets/images/background-fi.jpg");
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  background-size: cover;
+  position: fixed;
+}
