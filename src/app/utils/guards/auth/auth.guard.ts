@@ -40,7 +40,7 @@ export class AuthGuard implements CanActivate, CanActivateChild {
     if (response) {
       if (
         next.data.authorize &&
-        next.data.authorize.indexOf(response.UserStatusName) === -1
+        next.data.authorize.indexOf(response.UserTypeName) === -1
       ) {
         this._router.navigate(['/admin']);
         return false;

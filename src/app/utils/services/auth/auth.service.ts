@@ -46,7 +46,12 @@ export class AuthService {
       switch (error.status) {
         case 404:
           this._translateService
-            .get('There is no such user!')
+            .get('There is no such user !')
+            .subscribe((value) => (errorMessage = value));
+          break;
+        case 400:
+          this._translateService
+            .get('Your username or password is incorrect !')
             .subscribe((value) => (errorMessage = value));
           break;
         case 417:

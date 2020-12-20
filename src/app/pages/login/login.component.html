@@ -7,12 +7,11 @@
         </div>
 
         <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-            <input type="text" name="UserEmail" id="UserEmail" class="login__input"
-                placeholder="{{ 'E-Mail' | translate }}" #UserEmail="ngModel" [(ngModel)]="model.UserEmail"
+            <input type="text" name="EmailAddress" id="EmailAddress" class="login__input"
+                placeholder="{{ 'E-Mail' | translate }}" #EmailAddress="ngModel" [(ngModel)]="model.EmailAddress"
                 required />
-            <input type="password" name="UserPassword" id="UserPassword" class="login__input"
-                placeholder="{{ 'Password' | translate }}" #UserPassword="ngModel" [(ngModel)]="model.UserPassword"
-                required />
+            <input type="password" name="Password" id="Password" class="login__input"
+                placeholder="{{ 'Password' | translate }}" #Password="ngModel" [(ngModel)]="model.Password" required />
             <button type="submit" class="login__button">{{ 'Login' | translate }}</button>
         </form>
 
