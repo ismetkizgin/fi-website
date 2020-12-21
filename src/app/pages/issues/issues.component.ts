@@ -93,6 +93,7 @@ export class IssuesComponent implements OnInit {
   ];
 
   onDrop(event: CdkDragDrop<string[]>) {
+    console.log(event.previousContainer.data)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data,
         event.previousIndex,
@@ -101,10 +102,10 @@ export class IssuesComponent implements OnInit {
       transferArrayItem(event.previousContainer.data,
         event.container.data,
         event.previousIndex, event.currentIndex);
-        console.log(event.previousContainer)
     }
+    console.log(event.container.data[event.currentIndex])
     console.log(this.todos)
-    console.log(this.completed)
+    console.log(this.progresies)
   }
 
 }

@@ -8,9 +8,14 @@
 .rounded-xl {
   border-radius: 10px;
 }
+table{
+  height: 92vh;
+}
 .min-max-h {
-  min-height: 500px;
-  max-height: 500px;
+  min-height: 520px;
+  width: 90%; 
+  min-width: 300px;
+  max-height: 520px;
   overflow-y: auto;
 }
 .user-text {
@@ -28,4 +33,25 @@
   z-index: -1;
   background-size: cover;
   position: fixed;
+}
+td{
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background-color:transparent;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: transparent; 
+  border-radius:15px;
+  opacity: 0.4;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(27, 27, 27);
+}
 }
