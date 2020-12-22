@@ -16,6 +16,13 @@ import {
   AdminSidebarComponent,
 } from './components';
 import { FormsModule } from '@angular/forms';
+import {
+  UserListComponent,
+  HomepageComponent,
+  IssuesComponent,
+  DashboardComponent,
+  LoginComponent,
+} from './pages';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,6 +37,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminFooterComponent,
     AdminHeaderComponent,
     AdminSidebarComponent,
+    UserListComponent,
+    HomepageComponent,
+    IssuesComponent,
+    DashboardComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,4 +62,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
