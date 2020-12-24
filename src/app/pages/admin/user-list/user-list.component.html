@@ -18,16 +18,14 @@
                     <th>{{ 'User No' | translate }}</th>
                     <th>{{ 'Name Surname' | translate }}</th>
                     <th>{{ 'Email' | translate }}</th>
-                    <th>{{ 'Date Of Birth' | translate }}</th>
                     <th>{{ 'User Type' | translate }}</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let user of users">
-                    <td> {{ user.UserID }} </td>
-                    <td> {{ user.UserFirstName }} {{ user.UserLastName }}</td>
-                    <td> {{ user.UserEmail }}</td>
-                    <td> {{ user.UserDateOfBirth | date:'M/dd/yyyy' }}</td>
+                    <td> {{ user.Id }} </td>
+                    <td> {{ user.FirstName }} {{ user.LastName }}</td>
+                    <td> {{ user.EmailAddress }}</td>
                     <td> {{ user.UserTypeName | translate }}</td>
                     <td class="list-button text-right">
                         <a mat-icon-button [matMenuTriggerFor]="menu">

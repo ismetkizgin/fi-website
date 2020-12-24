@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     private _dialog: MatDialog
   ) { }
 
-  users: Array<any>;
+  users: Array<User>;
   searchText: string;
   paginationConfig = {
     id: 'userList',
@@ -28,14 +28,13 @@ export class UserListComponent implements OnInit {
   };
   async ngOnInit() {
     try {
-      this.users = <Array<any>>await this._userService.listAsync();
+      this.users = <Array<User>>await this._userService.listAsync();
     } catch (error) {
       this._userService.errorNotification(error);
     }
-    console.log(this.users)
   }
 
-  async userDelete(UserID) {
+  async userDelete(Id) {
     const diologRef = this._dialog.open(DialogWindowComponent, {
       data: {
         message: 'Are you sure you want to delete the user ?',
@@ -46,9 +45,9 @@ export class UserListComponent implements OnInit {
     diologRef.afterClosed().subscribe(async (result: boolean) => {
       if (result) {
         try {
-          await this._userService.deleteAsync({ UserID });
+          await this._userService.deleteAsync({ Id });
           this.users.splice(
-            this.users.findIndex((user) => user.UserID == UserID),
+            this.users.findIndex((user) => user.Id == Id),
             1
           );
           let notificationMessage: string;
