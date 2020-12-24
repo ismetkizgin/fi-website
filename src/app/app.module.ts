@@ -14,6 +14,7 @@ import {
   AdminFooterComponent,
   AdminHeaderComponent,
   AdminSidebarComponent,
+  ChangePasswordComponent,
 } from './components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     IssuesComponent,
     DashboardComponent,
     LoginComponent,
+    ChangePasswordComponent,
   ],
   imports: [
     BrowserModule,

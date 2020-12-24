@@ -36,8 +36,15 @@
                         <small>{{ userInformation.UserStatusName | translate }}</small>
                     </p>
                 </li>
+                <li class="user-body p-1">
+                    <div class="row">
+                        <div class="col-12 text-right">
+                            <a class="btn" (click)="openPasswordChangeWindow()">{{ 'Change Password' | translate }}</a>
+                        </div>
+                    </div>
+                </li>
                 <li class="user-footer">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                    <a routerLink="/admin/user/profile" class="btn btn-default btn-flat">Profile</a>
                     <a (click)="signout()" class="btn btn-default btn-flat float-right">{{ 'Sign out' | translate }}</a>
                 </li>
             </ul>

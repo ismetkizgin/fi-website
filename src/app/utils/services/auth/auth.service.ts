@@ -90,6 +90,15 @@ export class AuthService {
     }
   }
 
+  async changePassword(values) {
+    return await this._apiFetchService.requestAsync(
+      'PUT',
+      'change-password',
+      values,
+      true
+    );
+  }
+
   creatingPassword(passwordLength) {
     var lowerCharacters = [
       'a',
@@ -164,4 +173,39 @@ export class AuthService {
     localStorage.removeItem('currentUser');
     this._router.navigate(['login']);
   }
+
+  errorNotification(error) {
+    let errorMessage: string;
+    switch (error.status) {
+      case 401:
+        this._translateService
+          .get('Unauthorized transaction !')
+          .subscribe((value) => (errorMessage = value));
+        break;
+      case 417:
+        this._translateService
+          .get('Please add a correct file type !')
+          .subscribe((value) => (errorMessage = value));
+        break;
+      case 400:
+        this._translateService
+          .get('Your active password does not match !')
+          .subscribe((value) => (errorMessage = value));
+        break;
+      default:
+        this._translateService
+          .get(
+            'Server error occurred, please try again later If the error persists, we ask you to report this to the authorities'
+          )
+          .subscribe((value) => (errorMessage = value));
+        break;
+    }
+    this._snackBar.open(errorMessage, 'X', {
+      duration: 3000,
+      panelClass: 'notification__error',
+      verticalPosition: 'bottom',
+      horizontalPosition: 'right',
+    });
+  }
+  
 }
