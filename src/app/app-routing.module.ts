@@ -11,6 +11,7 @@ import {
   LoginComponent,
   IssuesComponent,
   UserListComponent,
+  AddUserComponent,
 } from './pages';
 
 
@@ -41,6 +42,21 @@ const routes: Routes = [
         path: 'users',
         component: UserListComponent,
         data: { title: 'User List', icon: 'fa fa-2x fa-home' },
+      },
+      {
+        path: 'user/add',
+        component: AddUserComponent,
+        data: { title: 'User Add', icon: 'fa fa-2x fa-home' },
+      },
+      {
+        path: 'user/profile',
+        component: AddUserComponent,
+        data: { title: 'User Profile', icon: 'fa fa-2x fa-home' },
+      },
+      {
+        path: 'user/edit/:Id',
+        component: AddUserComponent,
+        data: { title: 'User Edit', icon: 'fa fa-2x fa-home' },
       },
     ],
   },

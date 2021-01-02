@@ -32,15 +32,15 @@
                             <mat-icon class="list-menu">more_vert</mat-icon>
                         </a>
                         <mat-menu #menu="matMenu">
-                            <a mat-menu-item [routerLink]="['/admin/user/detail/',user.UserID]">
+                            <a mat-menu-item [routerLink]="['/admin/user/detail/',user.Id]">
                                 <mat-icon>remove_red_eye</mat-icon>
                                 <span>{{ 'Examine' | translate }}</span>
                             </a>
-                            <a mat-menu-item [routerLink]="['/admin/user/edit/',user.UserID]">
+                            <a mat-menu-item [routerLink]="['/admin/user/edit/',user.Id]">
                                 <mat-icon>edit</mat-icon>
                                 <span>{{ 'Edit' | translate }}</span>
                             </a>
-                            <a mat-menu-item (click)="userDelete(user.UserID)">
+                            <a mat-menu-item (click)="userDelete(user.Id)">
                                 <mat-icon>delete</mat-icon>
                                 <span>{{ 'Delete' | translate }}</span>
                             </a>

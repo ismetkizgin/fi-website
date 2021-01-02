@@ -32,7 +32,6 @@ export class AdminSidebarItemService {
           link: '/admin/user/add',
         },
       ],
-      authorize: [Roles.Root],
     },
     {
       title: 'Institution Transactions',
