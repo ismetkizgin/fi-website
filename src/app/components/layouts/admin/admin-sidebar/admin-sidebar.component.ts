@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService, AdminSidebarItemService } from '../../../../utils/services';
+import {
+  AuthService,
+  AdminSidebarItemService,
+} from '../../../../utils/services';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -16,14 +19,25 @@ export class AdminSidebarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._sidebarItemService.menu.forEach((item: any) => {
+    this._sidebarItemService.menu.forEach((parentMenu: any) => {
       if (
-        !item.authorize ||
-        item.authorize.indexOf(
-          this._authService.currentUserValue.result.UserStatusName
+        !parentMenu.authorize ||
+        parentMenu.authorize.indexOf(
+          this._authService.currentUserValue.result.UserTypeName
         ) != -1
-      )
-        this.menu.push(item);
+      ) {
+        if (parentMenu.submenu != null)
+          parentMenu.submenu.forEach((childMenu, index) => {
+            if (
+              childMenu.authorize != null &&
+              childMenu.authorize.indexOf(
+                this._authService.currentUserValue.result.UserTypeName
+              ) === -1
+            )
+              parentMenu.submenu.splice(index, 1);
+          });
+        this.menu.push(parentMenu);
+      }
     });
   }
 

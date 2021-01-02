@@ -9,9 +9,9 @@
 
                 <li *ngFor="let item of menu; index as indis"
                     [ngClass]="{'nav-item':true, 'has-treeview':item.submenu, 'menu-open':item.submenuShowHide}">
-                    
+
                     <a *ngIf="item.submenu; then dropdownItem else singleItem"></a>
-                    
+
                     <ng-template #dropdownItem>
                         <a (click)="toggle(indis)" [class.active]="isActive(item.linkActive)" class="nav-link">
                             <i class="nav-icon {{ item.icon }}"></i>
@@ -31,7 +31,8 @@
                     </ng-template>
 
                     <ng-template #singleItem>
-                        <a [routerLink]="[item.link]" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+                        <a [routerLink]="[item.link]" [routerLinkActive]="['active']"
+                            [routerLinkActiveOptions]="{exact: true}" class="nav-link">
                             <i class="nav-icon {{item.icon}}"></i>
                             <p>{{ item.title | translate }}</p>
                         </a>
