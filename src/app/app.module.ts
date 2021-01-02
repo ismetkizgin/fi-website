@@ -15,6 +15,7 @@ import {
   AdminHeaderComponent,
   AdminSidebarComponent,
   ChangePasswordComponent,
+  PasswordControlWindowComponent,
 } from './components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -23,8 +24,8 @@ import {
   IssuesComponent,
   DashboardComponent,
   LoginComponent,
+  AddUserComponent
 } from './pages';
-
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -44,6 +45,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     DashboardComponent,
     LoginComponent,
     ChangePasswordComponent,
+    AddUserComponent,
+    PasswordControlWindowComponent,
   ],
   imports: [
     BrowserModule,

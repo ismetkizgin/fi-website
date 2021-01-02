@@ -169,6 +169,33 @@ export class AuthService {
     return passwordArray.join('');
   }
 
+  async updateProfile(values) {
+    return await this._apiFetchService.requestAsync(
+      'PUT',
+      'my-account',
+      values,
+      true
+    );
+  }
+
+  async passwordControl(values) {
+    return await this._apiFetchService.requestAsync(
+      'POST',
+      'password-control',
+      values,
+      true
+    );
+  }
+  
+  async deleteProfile(values) {
+    return await this._apiFetchService.requestAsync(
+      'DELETE',
+      'my-account',
+      values,
+      true
+    );
+  }
+
   async logout() {
     localStorage.removeItem('currentUser');
     this._router.navigate(['login']);
