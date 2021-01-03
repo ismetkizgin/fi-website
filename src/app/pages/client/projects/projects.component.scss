@@ -1,0 +1,15 @@
+.width-18rem{
+    width: 18rem;
+    height: 190px;
+}
+.fas{
+    font-size: 100px;
+    margin-top: 20px;
+    color: rgb(235, 235, 235);
+}
+.add-project:hover{
+    cursor: pointer;
+    .fas{
+        color: rgb(190, 190, 190);
+    }
+}

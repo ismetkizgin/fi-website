@@ -12,6 +12,7 @@ import {
   IssuesComponent,
   UserListComponent,
   AddUserComponent,
+  ProjectsComponent,
 } from './pages';
 
 
@@ -22,8 +23,8 @@ const routes: Routes = [
     children: [
       { path: '', component: HomepageComponent },
       {
-        path: 'issues',
-        component: IssuesComponent,
+        path: 'projects',
+        component: ProjectsComponent,
       },
     ],
   },
