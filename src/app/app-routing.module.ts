@@ -12,6 +12,7 @@ import {
   IssuesComponent,
   UserListComponent,
   AddUserComponent,
+  ProjectListComponent,
 } from './pages';
 
 
@@ -56,6 +57,11 @@ const routes: Routes = [
       {
         path: 'user/edit/:Id',
         component: AddUserComponent,
+        data: { title: 'User Edit', icon: 'fa fa-2x fa-home' },
+      },
+      {
+        path: 'projects',
+        component: ProjectListComponent,
         data: { title: 'User Edit', icon: 'fa fa-2x fa-home' },
       },
     ],

@@ -32,28 +32,13 @@ export class AdminSidebarItemService {
           link: '/admin/user/add',
         },
       ],
+      authorize: [Roles.Root, Roles.Administrator],
     },
     {
-      title: 'Institution Transactions',
-      icon: 'fa fa-building',
-      linkActive: ['/admin/institutions', '/admin/institution/add'],
-      submenuShowHide: this.getChildUrlActiveState([
-        'institution',
-        'institutions',
-      ]),
-      submenu: [
-        {
-          title: 'Institution List',
-          icon: 'fa fa-map',
-          link: '/admin/institutions',
-        },
-        {
-          title: 'Institution Add',
-          icon: 'fa fa-plus-square',
-          link: '/admin/institution/add',
-        },
-      ],
-      authorize: [Roles.Root],
+      title: 'Project List',
+      icon: 'fa fa-user-plus',
+      link: '/admin/projects',
+      authorize: [Roles.Root, Roles.Administrator, Roles.Manager],
     },
   ];
 

@@ -24,7 +24,8 @@ import {
   IssuesComponent,
   DashboardComponent,
   LoginComponent,
-  AddUserComponent
+  AddUserComponent,
+  ProjectListComponent
 } from './pages';
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ChangePasswordComponent,
     AddUserComponent,
     PasswordControlWindowComponent,
+    ProjectListComponent,
   ],
   imports: [
     BrowserModule,
