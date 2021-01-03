@@ -196,6 +196,10 @@ export class AuthService {
     );
   }
 
+  async signUpAsync(values) {
+    return this._apiFetchService.requestAsync('POST', 'sign-up', values);
+  }
+
   async logout() {
     localStorage.removeItem('currentUser');
     this._router.navigate(['login']);

@@ -1,35 +1,95 @@
-<div class="login__wrapper">
+<div [ngClass]="{'login__wrapper':true, 'login__position': screenAverageState}">
     <div class="login__formContent">
-        <h2 class="login__form-title active">{{ 'Login' | translate }}</h2>
-
-        <div>
-            <img src="favicon.ico" class="login__logo" alt="User Icon" />
+        <h2 (click)="formTypeToggle('login')" class="login__form-title" [class.active]="formType=='login'">
+            {{ 'Login' | translate }}</h2>
+        <h2 *ngIf="!router.isActive('/login', false)" (click)="formTypeToggle('signUp')" class="login__form-title"
+            [class.active]="formType=='signUp'">
+            {{ 'Sign Up' | translate }}</h2>
+        <div [ngSwitch]="formType">
+            <div *ngSwitchCase="'login'">
+                <div class="logo">
+                    <img src="favicon.ico" width="250" height="100"
+                        class="d-inline-block align-top" alt="CL Logo" />
+                </div>
+                <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3 pt-3">
+                        <mat-label>{{'E-Mail'| translate}}</mat-label>
+                        <input matNativeControl name="EmailAddress" #EmailAddress="ngModel" [(ngModel)]="model.EmailAddress"
+                            required>
+                        <mat-error *ngIf="EmailAddress.invalid&&EmailAddress.touched">
+                            {{ 'E-Mail field must be filled' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3">
+                        <mat-label>{{ 'Password' | translate }}</mat-label>
+                        <input matInput [type]=" _passwordShowHide ? 'text' : 'password'"
+                            placeholder="{{ 'Password' | translate }}" name="Password" #Password="ngModel"
+                            [(ngModel)]="model.Password" required>
+                        <a type="button" matSuffix (click)="_passwordShowHide = !_passwordShowHide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="_passwordShowHide">
+                            <mat-icon>{{ _passwordShowHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </a>
+                        <mat-error
+                            *ngIf="Password.invalid && (Password.dirty || Password.touched) && Password.errors.required">
+                            {{ 'Password field must be filled' | translate }}</mat-error>
+                    </mat-form-field>
+                    <button type="submit"
+                        [ngClass]="{'login__button': true, 'login__button__blue': router.isActive('/login', true),'login__button__purple-linear': !router.isActive('/login', false) }">{{
+                        'Login' | translate }}</button>
+                </form>
+            </div>
+            <div *ngSwitchCase="'signUp'">
+                <form #signUpForm="ngForm" (ngSubmit)="onSignUp(signUpForm)">
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3">
+                        <mat-label>{{'First Name'| translate}}</mat-label>
+                        <input matNativeControl name="FirstName" #FirstName="ngModel"
+                            [(ngModel)]="model.FirstName" required>
+                        <mat-error *ngIf="FirstName.invalid&&FirstName.touched">
+                            {{ 'First Name field must be filled' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3">
+                        <mat-label>{{'Last Name'| translate}}</mat-label>
+                        <input matNativeControl name="LastName" #LastName="ngModel"
+                            [(ngModel)]="model.LastName" required>
+                        <mat-error *ngIf="LastName.invalid&&LastName.touched">
+                            {{ 'Last Name field must be filled' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3">
+                        <mat-label>{{'E-Mail'| translate}}</mat-label>
+                        <input matNativeControl name="EmailAddress" #EmailAddress="ngModel" [(ngModel)]="model.EmailAddress"
+                            required>
+                        <mat-error *ngIf="EmailAddress.invalid&&EmailAddress.touched">
+                            {{ 'E-Mail field must be filled' | translate }}
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100 pr-3 pl-3">
+                        <mat-label>{{ 'Password' | translate }}</mat-label>
+                        <input matInput [type]=" _passwordShowHide ? 'text' : 'password'"
+                            placeholder="{{ 'Password' | translate }}" name="Password" #Password="ngModel"
+                            [(ngModel)]="model.Password" required>
+                        <a type="button" matSuffix (click)="_passwordShowHide = !_passwordShowHide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="_passwordShowHide">
+                            <mat-icon>{{ _passwordShowHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </a>
+                        <mat-error
+                            *ngIf="Password.invalid && (Password.dirty || Password.touched) && Password.errors.required">
+                            {{ 'Password field must be filled' | translate }}</mat-error>
+                    </mat-form-field>
+                    <button type="submit" class="login__button login__button__purple-linear">{{ 'Sign Up' | translate
+                        }}</button>
+                </form>
+            </div>
         </div>
-
-        <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
-            <input type="text" name="EmailAddress" id="EmailAddress" class="login__input"
-                placeholder="{{ 'E-Mail' | translate }}" #EmailAddress="ngModel" [(ngModel)]="model.EmailAddress"
-                required />
-            <input type="password" name="Password" id="Password" class="login__input"
-                placeholder="{{ 'Password' | translate }}" #Password="ngModel" [(ngModel)]="model.Password" required />
-            <button type="submit" class="login__button">{{ 'Login' | translate }}</button>
-        </form>
-
         <div class="login__formFooter">
             <div class="row">
                 <div class="col-12">
-                    <a class="login__forget login__underlineHover" href="#">{{ 'Forgot password ?' | translate }}</a>
-                </div>
-                <div class="col-12 login__langues__box">
-                    <a (click)="useLanguage('tr')">
-                        <i class="flag-icon flag-icon-tr login__langues__flag"></i>
-                    </a>
-                    <a (click)="useLanguage('en')">
-                        <i class="flag-icon flag-icon-us login__langues__flag"></i>
+                    <a class="login__forget login__underlineHover" href="#">
+                        {{ 'Forgot password ?' | translate }}
                     </a>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

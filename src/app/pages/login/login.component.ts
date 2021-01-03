@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AuthService } from '../../utils/services';
-import { LanguageService } from '../../utils';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslateService } from '@ngx-translate/core';
-import { User } from '../../models/user';
+import { User, UserFormType } from '../../models';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +14,14 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
   constructor(
     private _authService: AuthService,
-    private _languageService: LanguageService,
     private _snackBar: MatSnackBar,
-    private _translateService: TranslateService
+    private _translateService: TranslateService,
+    public router: Router
   ) {}
-
   model: User = new User();
+  @Input() screenAverageState: boolean = true;
+  formType: UserFormType = UserFormType.login;
+  _passwordShowHide: boolean = false;
 
   ngOnInit(): void {}
 
@@ -38,7 +40,37 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  useLanguage(language: string) {
-    this._languageService.setLanguage(language);
+  formTypeToggle(userFormType) {
+    this.formType = userFormType;
+  }
+
+  async onSignUp(signUpForm: NgForm) {
+    try {
+      let notification: any = {
+        message: '',
+        panelClass: '',
+      };
+      if (signUpForm.valid) {
+        this._translateService
+          .get('User registration is complete')
+          .subscribe((value) => (notification.message = value));
+        notification.panelClass = 'notification__success';
+        await this._authService.signUpAsync(signUpForm.value);
+        signUpForm.resetForm();
+      } else {
+        this._translateService
+          .get('Please fill in the required fields')
+          .subscribe((value) => (notification.message = value));
+        notification.panelClass = 'notification__error';
+      }
+      this._snackBar.open(notification.message, 'X', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+        panelClass: notification.panelClass,
+      });
+    } catch (err) {
+      this._authService.errorNotification(err);
+    }
   }
 }
