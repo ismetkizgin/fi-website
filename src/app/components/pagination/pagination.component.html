@@ -1,0 +1,16 @@
+<pagination-template  #p="paginationApi" [maxSize]="7" [id]="config.id" (pageChange)="config.currentPage = $event">
+    <div class="row" *ngIf="!(p.pages.length <= 1)">
+        <div class="col-12 pagination__content">
+            <div class="pagination">
+                <a (click)="p.previous()" [class.pagination__disabled]="p.isFirstPage()">&laquo;</a>
+
+                <a *ngFor="let page of p.pages" [class.active]="p.getCurrent() === page.value" class="pagination__item"
+                    (click)="p.setCurrent(page.value)">
+                    <span>{{ page.label }}</span>
+                </a>
+
+                <a [class.pagination__disabled]="p.isLastPage()" (click)="p.next()">&raquo;</a>
+            </div>
+        </div>
+    </div>
+</pagination-template>

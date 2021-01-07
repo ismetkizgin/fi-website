@@ -31,6 +31,8 @@
     "@ngx-translate/http-loader": "^6.0.0",
     "admin-lte": "^3.0.5",
     "express": "^4.17.1",
+    "ng-search-filter": "^1.1.0",
+    "ngx-pagination": "^5.0.0",
     "path": "^0.12.7",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",

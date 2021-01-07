@@ -4,3 +4,4 @@ export * from './change-password/change-password.component';
 export * from './password-control-window/password-control-window.component';
 export * from './login-window/login-window.component';
 export * from './add-project/add-project.component';
+export * from './pagination/pagination.component';

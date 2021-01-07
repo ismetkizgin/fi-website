@@ -7,6 +7,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { NgSearchFilterModule } from 'ng-search-filter';
+import { NgxPaginationModule } from 'ngx-pagination';
 import { MatModule } from './utils';
 import {
   DialogWindowComponent,
@@ -18,7 +20,8 @@ import {
   PasswordControlWindowComponent,
   LoginWindowComponent,
   AddProjectComponent,
-  ClientBannerComponent
+  ClientBannerComponent,
+  PaginationComponent
 } from './components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -28,7 +31,8 @@ import {
   DashboardComponent,
   LoginComponent,
   ProjectsComponent,
-  AddUserComponent
+  AddUserComponent,
+  UsersComponent
 } from './pages';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -56,6 +60,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AddProjectComponent,
     ClientBannerComponent,
     ProjectsComponent,
+    UsersComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatModule,
     FormsModule,
     HttpClientModule,
+    NgSearchFilterModule,
+    NgxPaginationModule,
     BrowserAnimationsModule,
     DragDropModule,
     TranslateModule.forRoot({
