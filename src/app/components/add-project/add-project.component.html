@@ -12,7 +12,7 @@
         <div class="form-group mt-2">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>{{ 'Project Name' | translate }}</mat-label>
-                <input matInput type="text" placeholder="{{ 'Enter Project Name' | translate }}" name="ProjectName"
+                <input matInput maxlength="50" type="text" placeholder="{{ 'Enter Project Name' | translate }}" name="ProjectName"
                     #ProjectName="ngModel" [(ngModel)]="_model.ProjectName" required>
                 <mat-error *ngIf="ProjectName.invalid&&ProjectName.touched">
                     {{ 'Project Name field must be filled' | translate }}</mat-error>
@@ -21,7 +21,7 @@
         <div class="form-group">
             <mat-form-field appearance="outline" class="w-100">
                 <mat-label>{{ 'Description' | translate }}</mat-label>
-                <textarea matInput type="text" placeholder="{{ 'Enter Description' | translate }}" name="Description"
+                <textarea matInput type="text" maxlength="100" placeholder="{{ 'Enter Description' | translate }}" name="Description"
                     #Description="ngModel" [(ngModel)]="_model.Description" class="textarea" required></textarea>
                 <mat-error *ngIf="Description.invalid&&Description.touched">
                     {{ 'Description field must be filled' | translate }}</mat-error>
