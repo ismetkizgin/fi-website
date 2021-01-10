@@ -1,10 +1,10 @@
-.width-18rem{
-    width: 18rem;
-    height: 190px;
+.width-21rem{
+    width: 21rem;
+    height: 220px;
 }
 .fas{
     font-size: 100px;
-    margin-top: 20px;
+    margin-top: 35px;
     color: rgb(235, 235, 235);
 }
 .add-project:hover{
@@ -15,4 +15,26 @@
 }
 .list-menu{
     cursor: pointer;
+}
+
+.row-1{
+    height: 77px;
+}
+.row-2{
+    height: 75px;
+}
+p{
+    margin-bottom: 0!important;
+}
+@media screen and (max-width:380px){
+    .width-21rem{
+        width: 18rem;
+        height: 260px;
+    }
+    .row-1{
+        height: 90px;
+    }
+    .row-2{
+        height: 90px;
+    }
 }
