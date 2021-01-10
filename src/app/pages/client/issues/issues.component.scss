@@ -17,13 +17,17 @@ table{
   min-width: 300px;
   max-height: 520px;
   overflow-y: auto;
+  opacity: 0.83;
+}
+table{
+  padding-left: calc( 50vw - 700px);
 }
 .user-text {
   color: rgb(210, 210, 211);
   font-size: 11px;
 }
 .bg-image {
-  background-image: url("../../../../assets/images/background-fi.jpg");
+  background-image: url("../../../../assets/images/background-fi3.jpg");
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;

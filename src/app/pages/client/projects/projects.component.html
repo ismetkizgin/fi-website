@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-12 col-lg-4 col-md-6">
                     <div class="card text-center width-18rem border-top border-secondary mx-auto add-project"
-                        (click)="openAddProject()">
+                        (click)="openProjectTransactions()">
                         <div class="card-body">
                             <i class="fas fa-plus"></i>
                         </div>
@@ -14,7 +14,32 @@
                 <div class="col-12 col-lg-4 col-md-6" *ngFor="let project of projects">
                     <div class="card text-center width-18rem border-top border-secondary mx-auto">
                         <div class="card-body">
-                            <h3 class="card-title text-center w-100">{{project.ProjectName}}</h3>
+                            <div class="row">
+                                <div class="col-11">
+                                    <h3 class="card-title text-center w-100">{{project.ProjectName}}</h3>
+                                </div>
+                                <div class="col-1">
+                                    <td class="list-button text-right">
+                                        <a mat-icon-button [matMenuTriggerFor]="menu">
+                                            <mat-icon class="list-menu">more_vert</mat-icon>
+                                        </a>
+                                        <mat-menu #menu="matMenu">
+                                            <a mat-menu-item [routerLink]="['/users/',project.Id]"> 
+                                                <mat-icon>remove_red_eye</mat-icon>
+                                                <span>{{ 'User List' | translate }}</span>
+                                            </a>
+                                            <a mat-menu-item (click)="openProjectTransactions(project.Id)">
+                                                <mat-icon>edit</mat-icon>
+                                                <span>{{ 'Edit' | translate }}</span>
+                                            </a>
+                                            <a mat-menu-item>
+                                                <mat-icon>delete</mat-icon>
+                                                <span>{{ 'Delete' | translate }}</span>
+                                            </a>
+                                        </mat-menu>
+                                    </td>
+                                </div>
+                            </div>
                             <p class="card-text">{{project.Description}}</p>
                             <a href="#" class="btn btn-outline-dark">{{'Go To Jobs' | translate}}</a>
                         </div>

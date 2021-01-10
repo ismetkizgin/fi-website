@@ -6,31 +6,22 @@ import { TranslateService } from '@ngx-translate/core';
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectService {
+export class ProjectUserService {
   constructor(
     private _apiFetchService: ApiFetchService,
     private _snackBar: MatSnackBar,
     private _translateService: TranslateService
   ) {}
 
-  async listAsync() {
-    return await this._apiFetchService.requestAsync('GET', 'project/all', null, true);
+  async listAsync(Id) {
+    return await this._apiFetchService.requestAsync('GET', `project-user/${Id}`, null, true);
   }
 
   async deleteAsync(values) {
     return await this._apiFetchService.requestAsync(
       'DELETE',
-      'project',
+      'project-user',
       values,
-      true
-    );
-  }
-
-  async findAsync() {
-    return await this._apiFetchService.requestAsync(
-      'GET',
-      'project',
-      null,
       true
     );
   }
@@ -38,16 +29,7 @@ export class ProjectService {
   async insertAsync(values) {
     return await this._apiFetchService.requestAsync(
       'POST',
-      'project',
-      values,
-      true
-    );
-  }
-
-  async updateAsync(values) {
-    return await this._apiFetchService.requestAsync(
-      'PUT',
-      'project',
+      'project-user',
       values,
       true
     );
@@ -58,7 +40,7 @@ export class ProjectService {
     switch (error.status) {
       case 400:
         this._translateService
-          .get('User password does not match !')
+          .get('User does not match !')
           .subscribe((value) => (errorMessage = value));
         break;
       case 401:

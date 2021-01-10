@@ -20,15 +20,19 @@ export class ProjectsComponent implements OnInit {
 
   async ngOnInit() {
     try{
-      this.projects = <Array<Project>>await this._projectService.listAsync();
+      this.projects = <Array<Project>>await this._projectService.findAsync();
     }catch(error){
+      console.log(error)
       this._projectService.errorNotification(error);
     }
   }
 
-  openAddProject(Id = null) {
+  openProjectTransactions(Id = null) {
     this._dialog.open(AddProjectComponent, {
-      width: "400px"
+      width: "400px",
+      data: this.projects.find(
+        (project) => project.Id == Id
+      ),
     })
   }
 

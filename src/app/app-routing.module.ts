@@ -13,6 +13,7 @@ import {
   UserListComponent,
   AddUserComponent,
   ProjectsComponent,
+  UsersComponent,
 } from './pages';
 
 
@@ -25,6 +26,10 @@ const routes: Routes = [
       {
         path: 'projects',
         component: ProjectsComponent,
+      },
+      {
+        path: 'users/:Id',
+        component: UsersComponent,
       },
     ],
   },

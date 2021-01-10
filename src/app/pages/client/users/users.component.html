@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row p-0">
+        <div class="col-md-4 col-sm-12 add-button pt-2">
+            <button type="button" class="btn btn-sm btn-outline-success"><i
+                    class="fas fa-plus"></i> {{ 'Add User' | translate }}</button>
+        </div>
+        <div class="col-md-3 col-sm-12 ml-auto text-right pr-2">
+            <mat-form-field>
+                <mat-label>{{ 'Search' | translate }}</mat-label>
+                <input matInput type="text" [(ngModel)]="searchText"
+                    placeholder="{{ 'Enter Words for Search' | translate }}" name="SearchText">
+                <a type="button" matSuffix [attr.aria-label]="'Search'">
+                    <mat-icon>search</mat-icon>
+                </a>
+            </mat-form-field>
+        </div>
+      </div>
+    <div class="card">
+        <div class="card-body table-responsive p-0">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ 'Id' | translate }}</th>
+                        <th>{{ 'Name Surname' | translate }}</th>
+                        <th>{{ 'Email Address' | translate }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users | filter:searchText | paginate: paginationConfig">
+                        <td> {{ user.Id }} </td>
+                        <td> {{ user.FirstName }} {{ user.LastName }}</td>
+                        <td> {{ user.EmailAddress }}</td>
+                        <td class="list-button text-right">
+                            <a mat-icon-button [matMenuTriggerFor]="menu">
+                                <mat-icon class="list-menu">more_vert</mat-icon>
+                            </a>
+                            <mat-menu #menu="matMenu">
+                                <a mat-menu-item (click)="userDelete(user.Id)">
+                                    <mat-icon>delete</mat-icon>
+                                    <span>{{ 'Delete' | translate }}</span>
+                                </a>
+                            </mat-menu>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <app-pagination [config]="paginationConfig"></app-pagination>
+</div>
