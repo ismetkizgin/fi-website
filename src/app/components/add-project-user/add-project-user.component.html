@@ -1,0 +1,23 @@
+<div ma-dialog-title class="institution-dialog__header">
+    <div class="modal-header">
+        <h2>{{ 'Project Transactions' | translate}}</h2>
+        <a [mat-dialog-close]="false" class="close-icon">
+            <mat-icon>close</mat-icon>
+        </a>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography institution-dialog__content">
+    <form #addProjectUserForm='ngForm' (ngSubmit)="onSave(addProjectUserForm)">
+        <div class="form-group mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'User Email Address' | translate }}</mat-label>
+                <input matInput type="text" placeholder="{{ 'Enter User Email Address' | translate }}" name="EmailAddress"
+                    #EmailAddress="ngModel" [(ngModel)]="_model.EmailAddress" required>
+                <mat-error *ngIf="EmailAddress.invalid&&EmailAddress.touched">
+                    {{ 'User Email Address field must be filled' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn-info w-100">{{'Save'| translate}}</button>
+    </form>
+</mat-dialog-content>

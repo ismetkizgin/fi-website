@@ -32,7 +32,7 @@
                                                 <mat-icon>edit</mat-icon>
                                                 <span>{{ 'Edit' | translate }}</span>
                                             </a>
-                                            <a mat-menu-item>
+                                            <a mat-menu-item (click)="projectDelete(project.Id)">
                                                 <mat-icon>delete</mat-icon>
                                                 <span>{{ 'Delete' | translate }}</span>
                                             </a>

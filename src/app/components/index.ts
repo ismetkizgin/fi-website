@@ -5,3 +5,4 @@ export * from './password-control-window/password-control-window.component';
 export * from './login-window/login-window.component';
 export * from './add-project/add-project.component';
 export * from './pagination/pagination.component';
+export * from './add-project-user/add-project-user.component';
