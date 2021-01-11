@@ -1,0 +1,64 @@
+<div ma-dialog-title class="institution-dialog__header">
+    <div class="modal-header">
+        <h2>{{ 'Task Transactions' | translate}}</h2>
+        <a [mat-dialog-close]="false" class="close-icon">
+            <mat-icon>close</mat-icon>
+        </a>
+    </div>
+</div>
+
+<mat-dialog-content class="mat-typography institution-dialog__content">
+    <form #addProjectForm='ngForm' (ngSubmit)="onSave(addProjectForm)">
+        <div class="form-group mt-2">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'Task Name' | translate }}</mat-label>
+                <input matInput maxlength="50" type="text" placeholder="{{ 'Enter Task Name' | translate }}" name="TaskName"
+                    #TaskName="ngModel" [(ngModel)]="_model.TaskName" required>
+                <mat-error *ngIf="TaskName.invalid&&TaskName.touched">
+                    {{ 'Task Name field must be filled' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'Description' | translate }}</mat-label>
+                <textarea matInput type="text" maxlength="100" placeholder="{{ 'Enter Description' | translate }}" name="Description"
+                    #Description="ngModel" [(ngModel)]="_model.Description" class="textarea" required></textarea>
+                <mat-error *ngIf="Description.invalid&&Description.touched">
+                    {{ 'Description field must be filled' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'Due Date' | translate }}</mat-label>
+                <input matInput [matDatepicker]="picker1" name="DueDate"
+                    #DueDate="ngModel" [(ngModel)]="_model.DueDate" required>
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-error *ngIf="DueDate.invalid&&DueDate.touched">
+                    {{ 'Fill in the Due Date field' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{'User'| translate}}</mat-label>
+                <select matNativeControl name="UserID" #UserID="ngModel" [(ngModel)]="_model.UserID"
+                    required>
+                    <option *ngFor="let user of users" [value]="user.UserID">
+                        {{ user.FirstName }} {{ user.LastName }}</option>
+                </select>
+                <mat-error *ngIf="UserID.invalid">
+                    {{ 'Select the User' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group mt-2" [hidden]="_addUpdateControl">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'Task Status Name' | translate }}</mat-label>
+                <input matInput maxlength="50" [disabled]="_addUpdateControl" type="text" placeholder="{{ 'Enter Task Status Name' | translate }}" name="TaskStatusName"
+                    #TaskStatusName="ngModel" [(ngModel)]="_model.TaskStatusName" required>
+                <mat-error *ngIf="TaskStatusName.invalid&&TaskStatusName.touched">
+                    {{ 'Task Status Name field must be filled' | translate }}</mat-error>
+            </mat-form-field>
+        </div>
+        <button type="submit" class="btn btn-dark w-100">{{'Save'| translate}}</button>
+    </form>
+</mat-dialog-content>
