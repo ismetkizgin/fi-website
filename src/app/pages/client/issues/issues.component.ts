@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { TaskService } from '../../../utils';
+import { ActivatedRoute } from '@angular/router';
+import { Task } from 'src/app/models';
+import { MatDialog } from '@angular/material/dialog';
+import { AddTaskComponent } from 'src/app/components';
 
 @Component({
   selector: 'app-issues',
@@ -8,92 +13,29 @@ import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/dr
 })
 export class IssuesComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _activateRoute: ActivatedRoute,
+    private _taskService: TaskService,
+    private _dialog: MatDialog
+  ) { }
 
-  ngOnInit(): void {
+  tasks: Array<Task>;
+  todos: Array<Task>;
+  completed: Array<Task>;
+  progresies: Array<Task>;
+  tests: Array<Task>;
+
+  async ngOnInit() {
+    const ProjectId = this._activateRoute.snapshot.paramMap.get('Id')
+    try {
+      this.tasks = <Array<any>>await this._taskService.listAsync(ProjectId)
+      this.listsUpdate();
+    } catch (error) {
+      this._taskService.errorNotification(error);
+    }
   }
 
-  title = 'Drag & Drop in Angular 7';
-  website = 'https://samorgill.com';
-
-  todos = [
-    {
-      name: 'Angular page designs try revise deneme deneme',
-      category: 'Web Development'
-    },
-    {
-      name: 'Flexbox',
-      category: 'Web Development'
-    },
-    {
-      name: 'iOS',
-      category: 'App Development'
-    },
-    {
-      name: 'Java',
-      category: 'Software development'
-    }
-  ];
-
-  completed = [
-    {
-      name: 'Android',
-      category: 'Mobile Development'
-    },
-    {
-      name: 'MongoDB',
-      category: 'Databases'
-    },
-    {
-      name: 'ARKit',
-      category: 'Augmented Reality'
-    },
-    {
-      name: 'React',
-      category: 'Web Development'
-    }
-  ];
-
-  progresies = [
-    {
-      name: 'progress1',
-      category: 'Web Development'
-    },
-    {
-      name: 'progress2',
-      category: 'Web Development'
-    },
-    {
-      name: 'progress3',
-      category: 'App Development'
-    },
-    {
-      name: 'progress4',
-      category: 'Software development'
-    }
-  ];
-
-  tests = [
-    {
-      name: 'test1',
-      category: 'Mobile Development'
-    },
-    {
-      name: 'test2',
-      category: 'Databases'
-    },
-    {
-      name: 'test3',
-      category: 'Augmented Reality'
-    },
-    {
-      name: 'test4',
-      category: 'Web Development'
-    }
-  ];
-
   onDrop(event: CdkDragDrop<string[]>) {
-    console.log(event.previousContainer.data)
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data,
         event.previousIndex,
@@ -103,9 +45,27 @@ export class IssuesComponent implements OnInit {
         event.container.data,
         event.previousIndex, event.currentIndex);
     }
-    console.log(event.container.data[event.currentIndex])
-    console.log(this.todos)
-    console.log(this.progresies)
+    this._taskService.updateAsync(Object.assign(
+      {
+        TaskStatusName: event.container.id,
+        Id: event.container.data[event.currentIndex].Id,
+        ProjectID: event.container.data[event.currentIndex].ProjectID
+      }
+    ));
+  }
+
+  listsUpdate() {
+    this.todos = this.tasks.filter(data => data.TaskStatusName == "TO DO")
+    this.progresies = this.tasks.filter(data => data.TaskStatusName == "IN PROGRESS")
+    this.tests = this.tasks.filter(data => data.TaskStatusName == "TEST")
+    this.completed = this.tasks.filter(data => data.TaskStatusName == "DONE")
+  }
+
+  openAddTaskWindow() {
+    this._dialog.open(AddTaskComponent,{
+      width:"400px",
+      data:{ProjectId:this._activateRoute.snapshot.paramMap.get('Id')}
+    })
   }
 
 }

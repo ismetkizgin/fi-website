@@ -1,6 +1,15 @@
 .cdk-drag-placeholder {
   opacity: 0;
 }
+.min-height{
+  min-height: 450px;
+}
+.add-btn{
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 220px;
+    cursor: pointer;
+}
 .cards {
   cursor: pointer;
   min-width: 220px !important;

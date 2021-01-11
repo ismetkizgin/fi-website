@@ -42,7 +42,7 @@
                             </div>
                                 <p class="card-text row-2">{{project.Description}}</p>
                             <div class="row">
-                                <a href="#" class="btn btn-outline-dark mx-auto">{{'Go To Jobs' | translate}}</a>
+                                <a [routerLink]="['/issues/',project.Id]" class="btn btn-outline-dark mx-auto">{{'Go To Jobs' | translate}}</a>
                             </div>
                         </div>
                     </div>

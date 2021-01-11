@@ -7,12 +7,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 const matModule = [
   CommonModule,
   MatIconModule,
   MatDialogModule,
+  MatDatepickerModule,
   MatSnackBarModule,
+  MatNativeDateModule,
   MatFormFieldModule,
   MatInputModule,
   MatMenuModule,

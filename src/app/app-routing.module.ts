@@ -31,6 +31,10 @@ const routes: Routes = [
         path: 'users/:Id',
         component: UsersComponent,
       },
+      {
+        path: 'issues/:Id',
+        component: IssuesComponent,
+      },
     ],
   },
   {
