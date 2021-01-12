@@ -62,7 +62,7 @@ export class IssuesComponent implements OnInit {
 
   openTaskTransactions(Id=null) {
     this._dialog.open(LogDetailComponent,{
-      width:"400px",
+      width:"500px",
       data:{ProjectId:this._activateRoute.snapshot.paramMap.get('Id'),
       Id:Id,
        _model:this.tasks.find(
