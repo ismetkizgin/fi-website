@@ -7,7 +7,13 @@
 }
 .nav-link{
     color: rgb(231, 231, 231)!important;
+    padding-right: 1rem!important;
+    padding-left: 1rem!important;
 }
 .nav-link:active{
     color: white!important;
+}
+.navbar-nav{
+    flex-direction: row!important;
+    margin-right: auto;
 }

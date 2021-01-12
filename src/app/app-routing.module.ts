@@ -22,11 +22,7 @@ const routes: Routes = [
     path: '',
     component: ClientLayoutComponent,
     children: [
-      { path: '', component: HomepageComponent },
-      {
-        path: 'projects',
-        component: ProjectsComponent,
-      },
+      { path: '', component: ProjectsComponent },
       {
         path: 'users/:Id',
         component: UsersComponent,
