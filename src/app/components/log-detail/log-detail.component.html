@@ -1,0 +1,89 @@
+<div ma-dialog-title class="institution-dialog__header">
+    <div class="modal-header">
+        <h2>{{ 'Task Transactions' | translate}}</h2>
+        <a [mat-dialog-close]="false" class="close-icon">
+            <mat-icon>close</mat-icon>
+        </a>
+    </div>
+</div>
+<mat-dialog-content class="mat-typography institution-dialog__content">
+    <ng-container *ngIf="logControl; then logs else addTask"></ng-container>
+    <ng-template #addTask>
+        <app-add-task [ProjectId]="ProjectId"></app-add-task>
+    </ng-template>
+    <ng-template #logs>
+        <div class="card">
+            <div class="card-header p-2">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active p-1 pl-2 link-width" href="#examine" data-toggle="tab">
+                            <mat-icon>remove_red_eye</mat-icon><span>{{ 'Examine' | translate }}</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-1 pl-3 link-width" href="#logs" data-toggle="tab">
+                            <mat-icon>list</mat-icon><span>{{ 'Logs' | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="examine">
+                        <app-add-task [ProjectId]="ProjectId" [Id]="Id" [model]="_model"></app-add-task>
+                    </div>
+                    <div class="tab-pane" id="logs">
+                        <div class="container">
+                            <div class="row p-0">
+                                <div class="col-8 ml-auto text-right pr-2">
+                                    <mat-form-field>
+                                        <mat-label>{{ 'Search' | translate }}</mat-label>
+                                        <input matInput type="text" [(ngModel)]="searchText"
+                                            placeholder="{{ 'Enter Words for Search' | translate }}" name="SearchText">
+                                        <a type="button" matSuffix [attr.aria-label]="'Search'">
+                                            <mat-icon>search</mat-icon>
+                                        </a>
+                                    </mat-form-field>
+                                </div>
+                              </div>
+                            <div class="card">
+                                <div class="card-body table-responsive p-0">
+                                    <table class="table table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ 'User Name' | translate }}</th>
+                                                <th>{{ 'Task Status Name' | translate }}</th>
+                                                <th>{{ 'Change Date' | translate }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let log of logs | filter:searchText | paginate: paginationConfig">
+                                                <td> {{ log.UserName }} </td>
+                                                <td> {{ log.TaskStatusName }}</td>
+                                                <td> {{ log.CreatedDate }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <app-pagination [config]="paginationConfig"></app-pagination>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
+
+
+
+
+
+    
+
+
+
+
+
+
+</mat-dialog-content>

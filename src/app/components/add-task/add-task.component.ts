@@ -1,10 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskService, ProjectUserService } from '../../utils/services';
 import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Task, User } from 'src/app/models';
 
@@ -22,32 +21,33 @@ export class AddTaskComponent implements OnInit {
     public _router: Router,
     private dialogRef: MatDialogRef<AddTaskComponent>,
     private _projectUserService: ProjectUserService,
-    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
-  _model: Task=new Task();
+  _model: Task = new Task();
   users: Array<User>;
   _blogMenuListRenew: boolean = false;
   _action: Function;
-  _addUpdateControl:boolean=false;
+  _addUpdateControl: boolean = true;
+  @Input() ProjectId = null;
+  @Input() Id = null;
+  @Input() model=null;
 
   async ngOnInit() {
-    const ProjectId=this.data?.ProjectId;
-    try{
-      this.users= <Array<User>> await this._projectUserService.listAsync(ProjectId);
-    }catch(error){
+    try {
+      this.users = <Array<User>>await this._projectUserService.listAsync(this.ProjectId);
+    } catch (error) {
       this._projectUserService.errorNotification(error);
     }
-    if (this.data?.Id != null) {
+    if (this.Id != null) {
       try {
-        this._model = this.data;
+        this._addUpdateControl = false;
+        this._model=this.model;
       } catch (error) {
         this._taskService.errorNotification(error);
         this._router.navigateByUrl('admin');
       }
       this._action = this.updateActionAsync;
     } else {
-      this._addUpdateControl=true;
       this._blogMenuListRenew = false;
       this._action = this.insertActionAsync;
     }
@@ -83,7 +83,7 @@ export class AddTaskComponent implements OnInit {
     try {
       await this._taskService.insertAsync(
         Object.assign(addProjectForm.value, {
-          ProjectID: this.data.ProjectId,
+          ProjectID: this.ProjectId,
         })
       );
       addProjectForm.resetForm();
@@ -99,7 +99,7 @@ export class AddTaskComponent implements OnInit {
     try {
       await this._taskService.updateAsync(
         Object.assign(addProjectForm.value, {
-          Id: this.data.Id,
+          Id: this.Id,
         })
       );
       return true;

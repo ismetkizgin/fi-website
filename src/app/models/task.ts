@@ -5,4 +5,5 @@ export class Task {
     UserID: number;
     ProjectID: number;
     TaskStatusName: string;
+    Id:number;
 }

@@ -6,11 +6,11 @@
                 <div class="mx-auto min-height" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos" id="TO DO"
                     [cdkDropListConnectedTo]="[progressList, doneList, testList]" (cdkDropListDropped)="onDrop($event)">
                     <h2 class="text-center">{{ 'To Do' | translate}}</h2>
-                    <a class="p-2 add-btn" (click)="openAddTaskWindow()"><i class="fas fa-plus"></i></a>
+                    <a class="p-2 add-btn" (click)="openTaskTransactions()"><i class="fas fa-plus"></i></a>
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let todo of todos"
                         cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block">{{todo.TaskName}}</mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(todo.Id)">{{todo.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{todo.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -26,7 +26,7 @@
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
                         *ngFor="let progress of progresies" cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block">{{progress.TaskName}}</mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(progress.Id)">{{progress.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{progress.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -42,7 +42,7 @@
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let test of tests"
                         cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block">{{test.TaskName}}</mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(test.Id)">{{test.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{test.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -58,7 +58,7 @@
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
                         *ngFor="let complete of completed" cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block">{{complete.TaskName}}</mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(complete.Id)">{{complete.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{complete.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>

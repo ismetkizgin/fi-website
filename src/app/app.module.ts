@@ -23,7 +23,8 @@ import {
   ClientBannerComponent,
   PaginationComponent,
   AddProjectUserComponent,
-  AddTaskComponent
+  AddTaskComponent,
+  LogDetailComponent
 } from './components';
 import { FormsModule } from '@angular/forms';
 import {
@@ -66,6 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PaginationComponent,
     AddProjectUserComponent,
     AddTaskComponent,
+    LogDetailComponent,
   ],
   imports: [
     BrowserModule,

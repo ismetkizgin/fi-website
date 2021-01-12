@@ -4,7 +4,7 @@ import { TaskService } from '../../../utils';
 import { ActivatedRoute } from '@angular/router';
 import { Task } from 'src/app/models';
 import { MatDialog } from '@angular/material/dialog';
-import { AddTaskComponent } from 'src/app/components';
+import { AddTaskComponent, LogDetailComponent } from 'src/app/components';
 
 @Component({
   selector: 'app-issues',
@@ -48,8 +48,7 @@ export class IssuesComponent implements OnInit {
     this._taskService.updateAsync(Object.assign(
       {
         TaskStatusName: event.container.id,
-        Id: event.container.data[event.currentIndex].Id,
-        ProjectID: event.container.data[event.currentIndex].ProjectID
+        Id: event.container.data[event.currentIndex]["Id"],
       }
     ));
   }
@@ -61,10 +60,14 @@ export class IssuesComponent implements OnInit {
     this.completed = this.tasks.filter(data => data.TaskStatusName == "DONE")
   }
 
-  openAddTaskWindow() {
-    this._dialog.open(AddTaskComponent,{
+  openTaskTransactions(Id=null) {
+    this._dialog.open(LogDetailComponent,{
       width:"400px",
-      data:{ProjectId:this._activateRoute.snapshot.paramMap.get('Id')}
+      data:{ProjectId:this._activateRoute.snapshot.paramMap.get('Id'),
+      Id:Id,
+       _model:this.tasks.find(
+        (project) => project.Id == Id
+      ),}
     })
   }
 

@@ -2,16 +2,22 @@
   opacity: 0;
 }
 .min-height{
-  min-height: 450px;
+  min-height: 400px;
+}
+.cursor-pointer{
+  cursor: pointer;
 }
 .add-btn{
-    position: absolute;
-    margin-top: -50px;
+    position: relative;
+    top: -40px;
     margin-left: 220px;
     cursor: pointer;
 }
 .cards {
-  cursor: pointer;
+  min-width: 220px !important;
+}
+.cards:active {
+  cursor: all-scroll;
   min-width: 220px !important;
 }
 .rounded-xl {

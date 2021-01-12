@@ -7,3 +7,4 @@ export * from './add-project/add-project.component';
 export * from './pagination/pagination.component';
 export * from './add-project-user/add-project-user.component';
 export * from './add-task/add-task.component';
+export * from './log-detail/log-detail.component';
