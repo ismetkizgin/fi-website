@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ChangePasswordComponent } from '../../../change-password/change-password.component';
+import { AuthService } from '../../../../utils';
 
 @Component({
   selector: 'app-client-banner',
@@ -7,9 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientBannerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _dialog: MatDialog, 
+    private _authService: AuthService
+  ) { }
+
+  userInformation = this._authService.currentUserValue?.result;
 
   ngOnInit(): void {
+    console.log(this.userInformation)
+  }
+
+  async signout() {
+    await this._authService.logout();
+  }
+
+  openPasswordChangeWindow() {
+    this._dialog.open(ChangePasswordComponent, {
+      width: '400px',
+    });
   }
 
 }

@@ -1,6 +1,5 @@
 .bg-color{
-    background-color: #686969;
-    opacity: 0.7;
+    background-color: rgba(104, 105, 105, .7);
 }
 .font-size{
     font-size: 15px;
@@ -16,4 +15,7 @@
 .navbar-nav{
     flex-direction: row!important;
     margin-right: auto;
+}
+.bg-top{
+    background: rgb(0, 123, 255, 1)!important;
 }

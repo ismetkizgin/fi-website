@@ -2,14 +2,13 @@
     <div class="login__formContent">
         <h2 (click)="formTypeToggle('login')" class="login__form-title" [class.active]="formType=='login'">
             {{ 'Login' | translate }}</h2>
-        <h2 *ngIf="!router.isActive('/login', false)" (click)="formTypeToggle('signUp')" class="login__form-title"
+        <h2 (click)="formTypeToggle('signUp')" class="login__form-title"
             [class.active]="formType=='signUp'">
             {{ 'Sign Up' | translate }}</h2>
         <div [ngSwitch]="formType">
             <div *ngSwitchCase="'login'">
                 <div class="logo">
-                    <img src="favicon.ico" width="250" height="100"
-                        class="d-inline-block align-top" alt="CL Logo" />
+                    <img src="favicon.ico" width="150" class="d-inline-block align-top" alt="Fi Logo" />
                 </div>
                 <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
                     <mat-form-field appearance="outline" class="w-100 pr-3 pl-3 pt-3">
@@ -33,9 +32,7 @@
                             *ngIf="Password.invalid && (Password.dirty || Password.touched) && Password.errors.required">
                             {{ 'Password field must be filled' | translate }}</mat-error>
                     </mat-form-field>
-                    <button type="submit"
-                        [ngClass]="{'login__button': true, 'login__button__blue': router.isActive('/login', true),'login__button__purple-linear': !router.isActive('/login', false) }">{{
-                        'Login' | translate }}</button>
+                    <button type="submit" class="login__button login__button__blue">{{'Login' | translate }}</button>
                 </form>
             </div>
             <div *ngSwitchCase="'signUp'">
@@ -77,8 +74,7 @@
                             *ngIf="Password.invalid && (Password.dirty || Password.touched) && Password.errors.required">
                             {{ 'Password field must be filled' | translate }}</mat-error>
                     </mat-form-field>
-                    <button type="submit" class="login__button login__button__purple-linear">{{ 'Sign Up' | translate
-                        }}</button>
+                    <button type="submit" class="login__button login__button__blue">{{'Sign Up' | translate }}</button>
                 </form>
             </div>
         </div>

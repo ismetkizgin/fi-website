@@ -5,4 +5,34 @@
             <a class="nav-link" [routerLink]="['/']">My Projects</a>
         </li>
     </ul>
+    <ul class="navbar-nav ml-auto mr-0">
+        <li class="nav-item dropdown user-menu">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            <img src="assets/images/default/user.png" class="user-image img-circle elevation-2" alt="User Image">
+            <span class="d-none d-md-inline">{{ userInformation.FirstName }}
+              {{ userInformation.LastName }}</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
+            <li class="user-header bg-top text-white">
+              <img src="assets/images/default/user.png" class="img-circle elevation-2" alt="User Image">
+  
+              <p>
+                {{ userInformation.FirstName }} {{ userInformation.LastName }}
+                <small>{{ userInformation.UserTypeName | translate }}</small>
+              </p>
+            </li>
+            <li class="user-body p-1">
+                <div class="row">
+                    <div class="col-12 text-right">
+                        <a class="btn" (click)="openPasswordChangeWindow()">{{ 'Change Password' | translate }}</a>
+                    </div>
+                </div>
+            </li>
+            <li class="user-footer">
+              <a [routerLink]="['/admin/user/profile']" class="btn btn-default btn-flat">{{ 'Profile' | translate }}</a>
+              <a (click)="signout()" class="btn btn-default btn-flat float-right">{{ 'Sign out' | translate }}</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
 </nav>

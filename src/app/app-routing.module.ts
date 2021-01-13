@@ -20,6 +20,8 @@ import {
 const routes: Routes = [
   {
     path: '',
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     component: ClientLayoutComponent,
     children: [
       { path: '', component: ProjectsComponent },
