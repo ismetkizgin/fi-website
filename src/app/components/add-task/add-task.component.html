@@ -2,8 +2,8 @@
     <div class="form-group mt-2">
         <mat-form-field appearance="outline" class="w-100">
             <mat-label>{{ 'Task Name' | translate }}</mat-label>
-            <input matInput maxlength="150" type="text" placeholder="{{ 'Enter Task Name' | translate }}" name="TaskName"
-                #TaskName="ngModel" [(ngModel)]="_model.TaskName" required>
+            <textarea matInput maxlength="150"  class="textarea" type="text" placeholder="{{ 'Enter Task Name' | translate }}" name="TaskName"
+                #TaskName="ngModel" [(ngModel)]="_model.TaskName" required></textarea>
             <mat-error *ngIf="TaskName.invalid&&TaskName.touched">
                 {{ 'Task Name field must be filled' | translate }}</mat-error>
         </mat-form-field>
