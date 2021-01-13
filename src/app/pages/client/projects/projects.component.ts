@@ -9,35 +9,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
+  styleUrls: ['./projects.component.scss'],
 })
 export class ProjectsComponent implements OnInit {
-
   constructor(
     private _projectService: ProjectService,
     private _dialog: MatDialog,
     private _snackBar: MatSnackBar,
-    private _translateService: TranslateService,
-  ) { }
+    private _translateService: TranslateService
+  ) {}
 
   projects: Array<Project>;
 
   async ngOnInit() {
-    try{
+    try {
       this.projects = <Array<Project>>await this._projectService.findAsync();
-    }catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
       this._projectService.errorNotification(error);
     }
   }
 
   openProjectTransactions(Id = null) {
-    this._dialog.open(AddProjectComponent, {
-      width: "400px",
-      data: this.projects.find(
-        (project) => project.Id == Id
-      ),
-    })
+    const diologRef = this._dialog.open(AddProjectComponent, {
+      width: '400px',
+      data: this.projects.find((project) => project.Id == Id),
+    });
+
+    diologRef.afterClosed().subscribe((result: any) => {
+      if (result) this.ngOnInit();
+    });
   }
 
   async projectDelete(Id) {
@@ -73,5 +74,4 @@ export class ProjectsComponent implements OnInit {
       }
     });
   }
-
 }
