@@ -1,17 +1,17 @@
 .cdk-drag-placeholder {
   opacity: 0;
 }
-.min-height{
-  min-height: 400px;
+.min-height {
+  min-height: 85vh;
 }
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
 }
-.add-btn{
-    position: relative;
-    top: -40px;
-    margin-left: 220px;
-    cursor: pointer;
+.add-btn {
+  position: relative;
+  top: -40px;
+  margin-left: 220px;
+  cursor: pointer;
 }
 .cards {
   min-width: 220px !important;
@@ -23,19 +23,19 @@
 .rounded-xl {
   border-radius: 10px;
 }
-table{
-  height: calc(100vh - 60px);
+table {
+  height: calc(100vh - 70px);
 }
 .min-max-h {
   min-height: 520px;
-  width: 90%; 
+  width: 90%;
   min-width: 300px;
-  max-height: 520px;
   overflow-y: auto;
   opacity: 0.83;
+  height: 89vh;
 }
-table{
-  padding-left: calc( 50vw - 700px);
+table {
+  padding-left: calc(50vw - 700px);
 }
 .user-text {
   color: rgb(210, 210, 211);
@@ -53,24 +53,24 @@ table{
   background-size: cover;
   position: fixed;
 }
-td{
-::-webkit-scrollbar {
-  width: 10px;
-}
+td {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background-color:transparent;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: transparent; 
-  border-radius:15px;
-  opacity: 0.4;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(27, 27, 27);
-}
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 15px;
+    opacity: 0.4;
+  }
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(27, 27, 27);
+  }
 }

@@ -10,7 +10,8 @@
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let todo of todos"
                         cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(todo.Id)">{{todo.TaskName}}</a></mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
+                                    (click)="openTaskTransactions(todo.Id)">{{todo.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{todo.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -20,13 +21,16 @@
         </td>
         <td class="px-3">
             <div class="p-4 border border-secondary bg-black rounded-xl min-max-h mx-auto">
-                <div class="mx-auto min-height" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progresies" id="IN PROGRESS"
-                    [cdkDropListConnectedTo]="[testList, doneList, todoList]" (cdkDropListDropped)="onDrop($event)">
+                <div class="mx-auto min-height" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progresies"
+                    id="IN PROGRESS" [cdkDropListConnectedTo]="[testList, doneList, todoList]"
+                    (cdkDropListDropped)="onDrop($event)">
                     <h2 class="text-center">{{'In Progress' | translate}}</h2>
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
                         *ngFor="let progress of progresies" cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(progress.Id)">{{progress.TaskName}}</a></mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
+                                    (click)="openTaskTransactions(progress.Id)">{{progress.TaskName}}</a>
+                            </mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{progress.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -42,7 +46,8 @@
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let test of tests"
                         cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(test.Id)">{{test.TaskName}}</a></mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
+                                    (click)="openTaskTransactions(test.Id)">{{test.TaskName}}</a></mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{test.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
@@ -52,13 +57,16 @@
         </td>
         <td class="px-3">
             <div class="p-4 border border-secondary bg-black rounded-xl min-max-h mx-auto">
-                <div class="mx-auto min-height" cdkDropList #doneList="cdkDropList" [cdkDropListData]="completed" id="DONE"
-                    [cdkDropListConnectedTo]="[testList, todoList, progressList]" (cdkDropListDropped)="onDrop($event)">
+                <div class="mx-auto min-height" cdkDropList #doneList="cdkDropList" [cdkDropListData]="completed"
+                    id="DONE" [cdkDropListConnectedTo]="[testList, todoList, progressList]"
+                    (cdkDropListDropped)="onDrop($event)">
                     <h2 class="text-center">{{'Done' | translate }}</h2>
                     <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
                         *ngFor="let complete of completed" cdkDrag>
                         <mat-card-header>
-                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer" (click)="openTaskTransactions(complete.Id)">{{complete.TaskName}}</a></mat-card-title>
+                            <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
+                                    (click)="openTaskTransactions(complete.Id)">{{complete.TaskName}}</a>
+                            </mat-card-title>
                             <mat-card-subtitle class="mt-3 d-block text-right user-text">{{complete.UserName}}
                             </mat-card-subtitle>
                         </mat-card-header>
