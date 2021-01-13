@@ -25,7 +25,16 @@ h2{
   color: rgb(206, 206, 206);
 }
 .cards {
-  min-width: 220px !important;
+  width: 240px !important;
+}
+.ml-name{
+  margin-left: 95px;
+}
+.card-height{
+  height: 41px;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .cards:active {
   cursor: all-scroll;
