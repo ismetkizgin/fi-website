@@ -2,16 +2,27 @@
   opacity: 0;
 }
 .min-height {
-  min-height: 85vh;
+  min-height: 72vh;
 }
 .cursor-pointer {
   cursor: pointer;
 }
+h2{
+  margin: 0!important;
+}
+.header-text{
+  opacity: 0.83;
+  border-radius: 10px 10px 0 0;
+}
 .add-btn {
-  position: relative;
-  top: -40px;
+  position: absolute;
+  margin-top: -35px;
   margin-left: 220px;
+  color: white;
   cursor: pointer;
+}
+.add-btn:hover{
+  color: rgb(206, 206, 206);
 }
 .cards {
   min-width: 220px !important;
@@ -21,18 +32,21 @@
   min-width: 220px !important;
 }
 .rounded-xl {
-  border-radius: 10px;
+  border-radius: 0 0 10px 10px;
+}
+.rounded-xl-card {
+  border-radius: 15px 2px 15px 2px;
 }
 table {
   height: calc(100vh - 70px);
 }
 .min-max-h {
-  min-height: 520px;
+  min-height: 450px;
   width: 90%;
   min-width: 300px;
   overflow-y: auto;
   opacity: 0.83;
-  height: 89vh;
+  height: 80vh;
 }
 table {
   padding-left: calc(50vw - 700px);

@@ -2,12 +2,25 @@
 <table class="table-responsive mt-2">
     <tr>
         <td class="px-3">
+            <h2 class="text-center bg-black header-text">{{ 'To Do' | translate}}</h2>
+            <a class="p-2 add-btn" (click)="openTaskTransactions()"><i class="fas fa-plus"></i></a>
+        </td>
+        <td class="px-3">
+            <h2 class="text-center bg-black header-text">{{ 'In Progress' | translate}}</h2>
+        </td>
+        <td class="px-3">
+            <h2 class="text-center bg-black header-text">{{ 'Test' | translate}}</h2>
+        </td>
+        <td class="px-3">
+            <h2 class="text-center bg-black header-text">{{ 'Done' | translate}}</h2>
+        </td>
+    </tr>
+    <tr>
+        <td class="px-3">
             <div class="p-4 border border-secondary bg-black rounded-xl min-max-h mx-auto">
                 <div class="mx-auto min-height" cdkDropList #todoList="cdkDropList" [cdkDropListData]="todos" id="TO DO"
                     [cdkDropListConnectedTo]="[progressList, doneList, testList]" (cdkDropListDropped)="onDrop($event)">
-                    <h2 class="text-center">{{ 'To Do' | translate}}</h2>
-                    <a class="p-2 add-btn" (click)="openTaskTransactions()"><i class="fas fa-plus"></i></a>
-                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let todo of todos"
+                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl-card" *ngFor="let todo of todos"
                         cdkDrag>
                         <mat-card-header>
                             <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
@@ -24,8 +37,7 @@
                 <div class="mx-auto min-height" cdkDropList #progressList="cdkDropList" [cdkDropListData]="progresies"
                     id="IN PROGRESS" [cdkDropListConnectedTo]="[testList, doneList, todoList]"
                     (cdkDropListDropped)="onDrop($event)">
-                    <h2 class="text-center">{{'In Progress' | translate}}</h2>
-                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
+                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl-card"
                         *ngFor="let progress of progresies" cdkDrag>
                         <mat-card-header>
                             <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
@@ -42,8 +54,7 @@
             <div class="p-4 border border-secondary bg-black rounded-xl min-max-h mx-auto">
                 <div class="mx-auto min-height" cdkDropList #testList="cdkDropList" [cdkDropListData]="tests" id="TEST"
                     [cdkDropListConnectedTo]="[doneList, todoList, progressList]" (cdkDropListDropped)="onDrop($event)">
-                    <h2 class="text-center">{{'Test' | translate}}</h2>
-                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl" *ngFor="let test of tests"
+                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl-card" *ngFor="let test of tests"
                         cdkDrag>
                         <mat-card-header>
                             <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
@@ -60,8 +71,7 @@
                 <div class="mx-auto min-height" cdkDropList #doneList="cdkDropList" [cdkDropListData]="completed"
                     id="DONE" [cdkDropListConnectedTo]="[testList, todoList, progressList]"
                     (cdkDropListDropped)="onDrop($event)">
-                    <h2 class="text-center">{{'Done' | translate }}</h2>
-                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl"
+                    <mat-card class="p-3 bg-dark text-white d-block mb-3 cards rounded-xl-card"
                         *ngFor="let complete of completed" cdkDrag>
                         <mat-card-header>
                             <mat-card-title class="d-block"><a class="pt-2 border-bottom  cursor-pointer"
