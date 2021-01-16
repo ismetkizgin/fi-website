@@ -2,6 +2,35 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.4.0 (2021-01-16)
+
+
+### Features
+
+* added change password window ([0ae3bfe](https://github.com/ismetkizgin/fi-website/commit/0ae3bfee754c513802c91ace45135a0621bb5ea2))
+* added client banner component ([6c69a0d](https://github.com/ismetkizgin/fi-website/commit/6c69a0d26a68bbaeaa4406ffb1810bcd95f6d088))
+* added drag drop issues page design ([6cfe44b](https://github.com/ismetkizgin/fi-website/commit/6cfe44b5efade4eae1883be52787ce7681a7dcc2))
+* added issues page backend connection ([1f3b182](https://github.com/ismetkizgin/fi-website/commit/1f3b182ab5eb9bcfcd1b9d4daeeb2bcd9c25a682))
+* added log detail component and someone faulty transactions revised ([9bee6cf](https://github.com/ismetkizgin/fi-website/commit/9bee6cfb7083f1476c1f52980c5839a63fd18b7c))
+* added pagination component ([a98e9d5](https://github.com/ismetkizgin/fi-website/commit/a98e9d58ca0b14398ebcc7254e55baee54f0dbe7))
+* added password control window ([d9d48b1](https://github.com/ismetkizgin/fi-website/commit/d9d48b1c4df0cfe562bd3dca9a4be05927705c23))
+* added project add form window ([ac309e5](https://github.com/ismetkizgin/fi-website/commit/ac309e55c288333be414cb35e153650ee9ff1804))
+* added project list page ([469ef47](https://github.com/ismetkizgin/fi-website/commit/469ef47f524687ab2883c2bc1544ae7be9c85660))
+* added project user list page and page designs revised ([8f4a31a](https://github.com/ismetkizgin/fi-website/commit/8f4a31a49864b37a6fdee087454fdb858c15f9ae))
+* added project user window and project delete backend connection ([3418e54](https://github.com/ismetkizgin/fi-website/commit/3418e54d6a4a7040255457fba88c11f0ee8d333f))
+* added signup form ([be1d4e6](https://github.com/ismetkizgin/fi-website/commit/be1d4e6e3622d61413da00164f49aa55214ca94d))
+* added task add form window ([14e4481](https://github.com/ismetkizgin/fi-website/commit/14e4481f672bf693185dbd50ddedd7433e9e8291))
+* added user add form page ([c731934](https://github.com/ismetkizgin/fi-website/commit/c731934e47fbf8c87939720cb8b6eeff6648eaec))
+* added user list page ([9740979](https://github.com/ismetkizgin/fi-website/commit/9740979308f1cd09a156066265b455b44ded952c))
+* Profile button has been added to the navbar and forwarding operations are done. ([8d4901c](https://github.com/ismetkizgin/fi-website/commit/8d4901c2060457d04f7332736a5fd82f7fd444f6))
+
+
+### Bug Fixes
+
+* fix for change password window ([99fc17e](https://github.com/ismetkizgin/fi-website/commit/99fc17ee8305cff25c322beb4c09f1014c282d9d))
+* fix for error messages ([dafd8d6](https://github.com/ismetkizgin/fi-website/commit/dafd8d63cfd533c425fb17779195bac14e3c43a8))
+* fix for task log window ([01a577b](https://github.com/ismetkizgin/fi-website/commit/01a577bcb39181d62ae449e32efcc45ea77eaa3f))
+
 ## [1.3.0](https://github.com/ismetkizgin/AdminLTE-Starting-Kit-Angularjs/compare/v1.2.0...v1.3.0) (2020-10-31)
 
 
