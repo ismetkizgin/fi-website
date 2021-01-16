@@ -14,7 +14,12 @@ export class ProjectUserService {
   ) {}
 
   async listAsync(Id) {
-    return await this._apiFetchService.requestAsync('GET', `project-user/${Id}`, null, true);
+    return await this._apiFetchService.requestAsync(
+      'GET',
+      `project-user/${Id}`,
+      null,
+      true
+    );
   }
 
   async deleteAsync(values) {
@@ -40,7 +45,9 @@ export class ProjectUserService {
     switch (error.status) {
       case 400:
         this._translateService
-          .get('User does not match !')
+          .get(
+            'You cannot delete yourself because you are the owner of the project.'
+          )
           .subscribe((value) => (errorMessage = value));
         break;
       case 401:
@@ -50,17 +57,17 @@ export class ProjectUserService {
         break;
       case 409:
         this._translateService
-          .get('Such an project is already registered in the system !')
+          .get('User is already involved in the project !')
+          .subscribe((value) => (errorMessage = value));
+        break;
+      case 410:
+        this._translateService
+          .get('There is no such project Email Address in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       case 417:
         this._translateService
           .get('Please enter correct project information !')
-          .subscribe((value) => (errorMessage = value));
-        break;
-      case 404:
-        this._translateService
-          .get('No project record found in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       default:

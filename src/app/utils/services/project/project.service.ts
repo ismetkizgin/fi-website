@@ -14,7 +14,12 @@ export class ProjectService {
   ) {}
 
   async listAsync() {
-    return await this._apiFetchService.requestAsync('GET', 'project/all', null, true);
+    return await this._apiFetchService.requestAsync(
+      'GET',
+      'project/all',
+      null,
+      true
+    );
   }
 
   async deleteAsync(values) {
@@ -56,29 +61,19 @@ export class ProjectService {
   errorNotification(error) {
     let errorMessage: string;
     switch (error.status) {
-      case 400:
-        this._translateService
-          .get('User password does not match !')
-          .subscribe((value) => (errorMessage = value));
-        break;
       case 401:
         this._translateService
           .get('Unauthorized transaction !')
           .subscribe((value) => (errorMessage = value));
         break;
-      case 409:
+      case 410:
         this._translateService
-          .get('Such an project is already registered in the system !')
+          .get('There is no such project ID in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       case 417:
         this._translateService
           .get('Please enter correct project information !')
-          .subscribe((value) => (errorMessage = value));
-        break;
-      case 404:
-        this._translateService
-          .get('No project record found in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       default:

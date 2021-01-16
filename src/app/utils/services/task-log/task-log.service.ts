@@ -14,35 +14,30 @@ export class TaskLogService {
   ) {}
 
   async listAsync(TaskId) {
-    return await this._apiFetchService.requestAsync('GET', `task-log/${TaskId}`, null, true);
+    return await this._apiFetchService.requestAsync(
+      'GET',
+      `task-log/${TaskId}`,
+      null,
+      true
+    );
   }
 
   errorNotification(error) {
     let errorMessage: string;
     switch (error.status) {
-      case 400:
-        this._translateService
-          .get('Task does not match !')
-          .subscribe((value) => (errorMessage = value));
-        break;
       case 401:
         this._translateService
           .get('Unauthorized transaction !')
           .subscribe((value) => (errorMessage = value));
         break;
-      case 409:
+      case 410:
         this._translateService
-          .get('Such an task is already registered in the system !')
+          .get('There is no such task ID in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       case 417:
         this._translateService
           .get('Please enter correct task information !')
-          .subscribe((value) => (errorMessage = value));
-        break;
-      case 404:
-        this._translateService
-          .get('No task record found in the system !')
           .subscribe((value) => (errorMessage = value));
         break;
       default:
