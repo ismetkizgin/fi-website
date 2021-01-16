@@ -16,7 +16,6 @@ import {
   UsersComponent,
 } from './pages';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -28,10 +27,12 @@ const routes: Routes = [
       {
         path: 'users/:Id',
         component: UsersComponent,
+        data: { title: 'User List' },
       },
       {
         path: 'issues/:Id',
         component: IssuesComponent,
+        data: { title: 'Issues Board' },
       },
     ],
   },
@@ -71,7 +72,7 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
-    data: { title: 'ismet w' },
+    data: { title: 'Login' },
   },
 ];
 

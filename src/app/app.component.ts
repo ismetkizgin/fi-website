@@ -41,9 +41,7 @@ export class AppComponent {
         })
       )
       .subscribe((title) => {
-        this.titleService.setTitle(
-          `${title != null ? `${title} - ` : ``} Angular Starting Kit`
-        );
+        this.titleService.setTitle(`${title != null ? `${title} - ` : ``} Fİ`);
       });
   }
 }
