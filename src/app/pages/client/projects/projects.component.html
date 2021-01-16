@@ -2,6 +2,16 @@
     <div class="card">
         <div class="card-header bg-dark">{{'My Projects' | translate}}</div>
         <div class="card-body">
+            <div class="col-8 ml-auto text-right pr-2">
+                <mat-form-field>
+                    <mat-label>{{ 'Search' | translate }}</mat-label>
+                    <input matInput type="text" [(ngModel)]="searchText"
+                        placeholder="{{ 'Enter Words for Search' | translate }}" name="SearchText">
+                    <a type="button" matSuffix [attr.aria-label]="'Search'">
+                        <mat-icon>search</mat-icon>
+                    </a>
+                </mat-form-field>
+            </div>
             <div class="row">
                 <div class="col-12 col-xl-4 col-md-6">
                     <div class="card text-center width-21rem border-top border-secondary mx-auto add-project"
@@ -11,7 +21,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-xl-4 col-md-6" *ngFor="let project of projects">
+                <div class="col-12 col-xl-4 col-md-6" *ngFor="let project of projects | filter:searchText | paginate: paginationConfig">
                     <div class="card text-center width-21rem border-top border-secondary mx-auto">
                         <div class="card-body">
                             <div class="row row-1 pl-4">
@@ -41,6 +51,8 @@
                                 </div>
                             </div>
                                 <p class="card-text row-2">{{project.Description}}</p>
+                                <span class="time" *ngIf="project.DueDate">{{ 'Estimated End Time' | translate }} : </span>
+                                <span class="time">{{project.DueDate | date:'M/dd/yyyy'}}</span>
                             <div class="row">
                                 <a [routerLink]="['/issues/',project.Id]" class="btn btn-outline-dark mx-auto">{{'Go To Jobs' | translate}}</a>
                             </div>
@@ -48,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            <app-pagination [config]="paginationConfig"></app-pagination>
         </div>
     </div>
 </div>

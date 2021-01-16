@@ -27,6 +27,7 @@ export class AddProjectComponent implements OnInit {
   _model: Project=new Project();
   _blogMenuListRenew: boolean = false;
   _action: Function;
+  disableButton:boolean=false;
 
   async ngOnInit() {
     if (this.data?.Id != null) {
@@ -71,11 +72,13 @@ export class AddProjectComponent implements OnInit {
   }
   async insertActionAsync(addProjectForm: NgForm) {
     try {
+      this.disableButton=true;
       await this._projectService.insertAsync(addProjectForm.value);
       addProjectForm.resetForm();
       this._blogMenuListRenew = true;
       return true;
     } catch (error) {
+      this.disableButton=false;
       this._projectService.errorNotification(error);
       return false;
     }

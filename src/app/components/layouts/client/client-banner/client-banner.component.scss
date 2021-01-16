@@ -19,3 +19,18 @@
 .bg-top{
     background: rgb(0, 123, 255, 1)!important;
 }
+.lang {
+    position: relative;
+    width: 25px;
+    height: 25px;
+
+  &__selection {
+    cursor: pointer;
+  }
+}
+.flag-height{
+    padding-top: 5px;
+    padding-bottom: 0;
+    padding-left: 0!important;
+    padding-right: 0!important;
+}

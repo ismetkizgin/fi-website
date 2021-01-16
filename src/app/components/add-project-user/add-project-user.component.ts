@@ -25,6 +25,7 @@ export class AddProjectUserComponent implements OnInit {
   _model: ProjectUser=new ProjectUser();
   _projectUserListRenew: boolean = false;
   _action: Function;
+  disableButton=false;
 
   async ngOnInit() {
       this._projectUserListRenew = false;
@@ -61,6 +62,7 @@ export class AddProjectUserComponent implements OnInit {
 
   async insertActionAsync(addProjectUserForm: NgForm) {
     try {
+      this.disableButton=true;
       await this._projectUserService.insertAsync(
         Object.assign(addProjectUserForm.value, {
           ProjectID: this.data,
@@ -70,6 +72,7 @@ export class AddProjectUserComponent implements OnInit {
       this._projectUserListRenew = true;
       return true;
     } catch (error) {
+      this.disableButton=false;
       this._projectUserService.errorNotification(error);
       return false;
     }

@@ -29,6 +29,7 @@ export class AddUserComponent implements OnInit {
   _passwordShowHide: boolean = false;
   _model: User = new User();
   _action: Function;
+  disableButton=false;
   _UserTypeName = this._authService.currentUserValue.result.UserTypeName;
   lang: string = this._languageService.getLanguage() || 'tr';
   userRoles: Array<object> = [
@@ -110,10 +111,12 @@ export class AddUserComponent implements OnInit {
 
   async insertActionAsync(userForm: NgForm) {
     try {
+      this.disableButton=true;
       await this._userService.insertAsync(userForm.value);
       userForm.resetForm();
       return true;
     } catch (error) {
+      this.disableButton=false;
       this._userService.errorNotification(error);
       return false;
     }

@@ -28,6 +28,7 @@ export class AddTaskComponent implements OnInit {
   _blogMenuListRenew: boolean = false;
   _action: Function;
   _addUpdateControl: boolean = true;
+  disableButton=false;
   @Input() ProjectId = null;
   @Input() Id = null;
   @Input() model=null;
@@ -81,6 +82,7 @@ export class AddTaskComponent implements OnInit {
   }
   async insertActionAsync(addProjectForm: NgForm) {
     try {
+      this.disableButton=true;
       await this._taskService.insertAsync(
         Object.assign(addProjectForm.value, {
           ProjectID: this.ProjectId,
@@ -90,6 +92,7 @@ export class AddTaskComponent implements OnInit {
       this._blogMenuListRenew = true;
       return true;
     } catch (error) {
+      this.disableButton=false;
       this._taskService.errorNotification(error);
       return false;
     }

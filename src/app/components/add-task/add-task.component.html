@@ -54,5 +54,5 @@
                 {{ 'Select the Status Name' | translate }}</mat-error>
         </mat-form-field>
     </div>
-    <button type="submit" class="btn btn-dark w-100">{{'Save'| translate}}</button>
+    <button type="submit" class="btn btn-dark w-100" [disabled]="disableButton">{{'Save'| translate}}</button>
 </form>

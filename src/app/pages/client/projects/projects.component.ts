@@ -19,21 +19,28 @@ export class ProjectsComponent implements OnInit {
     private _translateService: TranslateService
   ) {}
 
-  projects: Array<Project>;
+  projects: Array<any>;
+  searchText = '';
+  paginationConfig = {
+    id: 'users',
+    itemsPerPage: 5,
+    currentPage: 1,
+  };
 
   async ngOnInit() {
     try {
-      this.projects = <Array<Project>>await this._projectService.findAsync();
+      this.projects = <Array<any>>await this._projectService.findAsync();
     } catch (error) {
       console.log(error);
       this._projectService.errorNotification(error);
     }
+    console.log(this.projects)
   }
 
   openProjectTransactions(Id = null) {
     const diologRef = this._dialog.open(AddProjectComponent, {
       width: '400px',
-      data: this.projects.find((project) => project.Id == Id),
+      data: Id==null?null:this.projects.find((project) => project.Id == Id),
     });
 
     diologRef.afterClosed().subscribe((result: any) => {
