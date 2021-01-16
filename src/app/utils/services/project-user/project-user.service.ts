@@ -46,7 +46,7 @@ export class ProjectUserService {
       case 400:
         this._translateService
           .get(
-            'You cannot delete yourself because you are the owner of the project.'
+            'You cannot delete yourself because you are the owner of the project!'
           )
           .subscribe((value) => (errorMessage = value));
         break;
