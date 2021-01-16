@@ -21,7 +21,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-xl-4 col-md-6" *ngFor="let project of projects | filter:searchText | paginate: paginationConfig">
+                <div class="col-12 col-xl-4 col-md-6"
+                    *ngFor="let project of projects | filter:searchText | paginate: paginationConfig">
                     <div class="card text-center width-21rem border-top border-secondary mx-auto">
                         <div class="card-body">
                             <div class="row row-1 pl-4">
@@ -34,7 +35,7 @@
                                             <mat-icon class="list-menu">more_vert</mat-icon>
                                         </a>
                                         <mat-menu #menu="matMenu">
-                                            <a mat-menu-item [routerLink]="['/users/',project.Id]"> 
+                                            <a mat-menu-item [routerLink]="['/users/',project.Id]">
                                                 <mat-icon>remove_red_eye</mat-icon>
                                                 <span>{{ 'User List' | translate }}</span>
                                             </a>
@@ -50,11 +51,15 @@
                                     </td>
                                 </div>
                             </div>
-                                <p class="card-text row-2">{{project.Description}}</p>
-                                <span class="time" *ngIf="project.DueDate">{{ 'Estimated End Time' | translate }} : </span>
+                            <p class="card-text row-2">{{project.Description}}</p>
+                            <div class="time-height">
+                                <span class="time" *ngIf="project.DueDate">{{ 'Estimated End Time' | translate }} :
+                                </span>
                                 <span class="time">{{project.DueDate | date:'M/dd/yyyy'}}</span>
+                            </div>
                             <div class="row">
-                                <a [routerLink]="['/issues/',project.Id]" class="btn btn-outline-dark mx-auto">{{'Go To Jobs' | translate}}</a>
+                                <a [routerLink]="['/issues/',project.Id]" class="btn btn-outline-dark mx-auto">{{'Go To
+                                    Jobs' | translate}}</a>
                             </div>
                         </div>
                     </div>
