@@ -6,7 +6,6 @@ import {
   AdminLayoutComponent,
 } from './components/layouts';
 import {
-  HomepageComponent,
   DashboardComponent,
   LoginComponent,
   IssuesComponent,
@@ -86,6 +85,5 @@ export const routingComponents = [
   ClientLayoutComponent,
   DashboardComponent,
   IssuesComponent,
-  HomepageComponent,
   LoginComponent,
 ];

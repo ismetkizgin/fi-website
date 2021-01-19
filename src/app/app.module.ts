@@ -24,18 +24,17 @@ import {
   PaginationComponent,
   AddProjectUserComponent,
   AddTaskComponent,
-  LogDetailComponent
+  LogDetailComponent,
 } from './components';
 import { FormsModule } from '@angular/forms';
 import {
   UserListComponent,
-  HomepageComponent,
   IssuesComponent,
   DashboardComponent,
   LoginComponent,
   ProjectsComponent,
   AddUserComponent,
-  UsersComponent
+  UsersComponent,
 } from './pages';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,7 +51,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AdminHeaderComponent,
     AdminSidebarComponent,
     UserListComponent,
-    HomepageComponent,
     IssuesComponent,
     DashboardComponent,
     LoginComponent,
@@ -90,4 +88,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
