@@ -10,46 +10,45 @@ import { Task, User } from 'src/app/models';
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
-  styleUrls: ['./add-task.component.scss']
+  styleUrls: ['./add-task.component.scss'],
 })
 export class AddTaskComponent implements OnInit {
-
   constructor(
     private _translateService: TranslateService,
     private _snackBar: MatSnackBar,
     private _taskService: TaskService,
     public _router: Router,
     private dialogRef: MatDialogRef<AddTaskComponent>,
-    private _projectUserService: ProjectUserService,
-  ) { }
+    private _projectUserService: ProjectUserService
+  ) {}
 
   _model: Task = new Task();
   users: Array<User>;
-  _blogMenuListRenew: boolean = false;
   _action: Function;
   _addUpdateControl: boolean = true;
-  disableButton=false;
+  disableButton = false;
   @Input() ProjectId = null;
   @Input() Id = null;
-  @Input() model=null;
+  @Input() model = null;
 
   async ngOnInit() {
     try {
-      this.users = <Array<User>>await this._projectUserService.listAsync(this.ProjectId);
+      this.users = <Array<User>>(
+        await this._projectUserService.listAsync(this.ProjectId)
+      );
     } catch (error) {
       this._projectUserService.errorNotification(error);
     }
     if (this.Id != null) {
       try {
         this._addUpdateControl = false;
-        this._model=this.model;
+        this._model = this.model;
       } catch (error) {
         this._taskService.errorNotification(error);
         this._router.navigateByUrl('admin');
       }
       this._action = this.updateActionAsync;
     } else {
-      this._blogMenuListRenew = false;
       this._action = this.insertActionAsync;
     }
   }
@@ -65,7 +64,7 @@ export class AddTaskComponent implements OnInit {
         .subscribe((value) => (notification.message = value));
       notification.panelClass = 'notification__success';
       if (!(await this._action(addProjectForm))) return;
-      this.dialogRef.close(this._blogMenuListRenew);
+      this.dialogRef.close(true);
     } else {
       this._translateService
         .get('Please fill in the required fields')
@@ -82,17 +81,16 @@ export class AddTaskComponent implements OnInit {
   }
   async insertActionAsync(addProjectForm: NgForm) {
     try {
-      this.disableButton=true;
+      this.disableButton = true;
       await this._taskService.insertAsync(
         Object.assign(addProjectForm.value, {
           ProjectID: this.ProjectId,
         })
       );
       addProjectForm.resetForm();
-      this._blogMenuListRenew = true;
       return true;
     } catch (error) {
-      this.disableButton=false;
+      this.disableButton = false;
       this._taskService.errorNotification(error);
       return false;
     }
@@ -111,5 +109,4 @@ export class AddTaskComponent implements OnInit {
       return false;
     }
   }
-
 }
