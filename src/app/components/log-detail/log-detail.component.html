@@ -60,7 +60,7 @@
                                             <tr
                                                 *ngFor="let log of taskLogs | filter:searchText | paginate: paginationConfig">
                                                 <td> {{ log.UserName }} </td>
-                                                <td> {{ log.TaskStatusName }}</td>
+                                                <td> {{ log.TaskStatusName | translate }}</td>
                                                 <td> {{ log.CreatedDate | date:'M/dd/yyyy, HH:mm':'+3' }}</td>
                                             </tr>
                                         </tbody>

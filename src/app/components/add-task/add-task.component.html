@@ -45,10 +45,10 @@
             <mat-label>{{'Task Status Name'| translate}}</mat-label>
             <select matNativeControl name="TaskStatusName" [disabled]="_addUpdateControl" #TaskStatusName="ngModel"
                 [(ngModel)]="_model.TaskStatusName" required>
-                <option>TO DO</option>
-                <option>IN PROGRESS</option>
-                <option>TEST</option>
-                <option>DONE</option>
+                <option value="TO DO">{{'TO DO' | translate}}</option>
+                <option value="IN PROGRESS">{{'IN PROGRESS' | translate}}</option>
+                <option value="TEST">{{'TEST' | translate}}</option>
+                <option value="DONE">{{'DONE' | translate}}</option>
             </select>
             <mat-error *ngIf="TaskStatusName.invalid">
                 {{ 'Select the Status Name' | translate }}</mat-error>
