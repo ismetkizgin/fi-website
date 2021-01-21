@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/ismetkizgin/fi-website/compare/v1.4.0...v1.4.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* board update after task update ([5502bb9](https://github.com/ismetkizgin/fi-website/commit/5502bb962edd4b376c318bd96b7dfb3dcb3b5601))
+* fix for page titles ([6f4433f](https://github.com/ismetkizgin/fi-website/commit/6f4433f52c8ef25f41fda6d1977a740794b4afe8))
+* fix for project error ([b12b4a0](https://github.com/ismetkizgin/fi-website/commit/b12b4a048bfa95fca8b6facc0ee78ce489989ce8))
+
 ## 1.4.0 (2021-01-16)
 
 

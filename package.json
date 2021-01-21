@@ -1,6 +1,6 @@
 {
   "name": "adminlte-starting-kit-angularjs",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --configuration=production --host 0.0.0.0",
