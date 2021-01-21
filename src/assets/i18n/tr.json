@@ -105,5 +105,9 @@
   "Your Active Password field must be filled": "Aktif Parola alanınız doldurulmalıdır",
   "Your account has been deleted": "Hesabınız silinmiştir",
   "Your active password does not match !": "Aktif şifreniz uyuşmuyor!",
-  "Your username or password is incorrect !": "Kullanıcı adınız veya şifreniz hatalı !"
+  "Your username or password is incorrect !": "Kullanıcı adınız veya şifreniz hatalı !",
+  "Go To Jobs": "İşlere Git",
+  "User Transactions": "Kullanıcı İşlemleri",
+  "User Add": "Kullanıcı Ekle",
+  "Dashboard": "Gösterge Paneli"
 }

@@ -105,5 +105,9 @@
   "Your Active Password field must be filled": "Your Active Password field must be filled",
   "Your account has been deleted": "Your account has been deleted",
   "Your active password does not match !": "Your active password does not match !",
-  "Your username or password is incorrect !": "Your username or password is incorrect !"
+  "Your username or password is incorrect !": "Your username or password is incorrect !",
+  "Go To Jobs": "Go To Jobs",
+  "User Transactions": "User Transactions",
+  "User Add": "User Add",
+  "Dashboard": "Dashboard"
 }
