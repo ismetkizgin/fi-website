@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/ismetkizgin/fi-website/compare/v1.4.1...v1.4.2) (2021-01-21)
+
+
+### Bug Fixes
+
+* fix for language pack ([065ff6d](https://github.com/ismetkizgin/fi-website/commit/065ff6dff6e70223df8d255ff1e35883a80e4cf6))
+
 ### [1.4.1](https://github.com/ismetkizgin/fi-website/compare/v1.4.0...v1.4.1) (2021-01-21)
 
 
